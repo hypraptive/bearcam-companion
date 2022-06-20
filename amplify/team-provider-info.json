@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bearcamcompanion-staging-43951-authRole",
+      "UnauthRoleArn": "arn:aws:iam::664488008388:role/amplify-bearcamcompanion-staging-43951-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::664488008388:role/amplify-bearcamcompanion-staging-43951-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
+      "UnauthRoleName": "amplify-bearcamcompanion-staging-43951-unauthRole",
+      "StackName": "amplify-bearcamcompanion-staging-43951",
+      "StackId": "arn:aws:cloudformation:us-east-1:664488008388:stack/amplify-bearcamcompanion-staging-43951/0df03810-d8c0-11ec-9e2a-1200de716377",
+      "AmplifyAppId": "d7ijzylsc7qfm"
+    },
+    "categories": {
+      "auth": {
+        "BearcamCompanion": {}
+      }
+    }
+  }
+}

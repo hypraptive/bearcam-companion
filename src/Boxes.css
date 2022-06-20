@@ -1,0 +1,60 @@
+.hidden {
+  display: none;
+}
+
+.bbox {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.69);
+  border-radius: 6px;
+  box-shadow: 0 0 2px Blue,inset 0 0 2px Blue;
+  pointer-events: inherit;
+}
+
+.bbox:hover {
+  border: 2px solid rgba(255, 255, 255, 0.69);
+  box-shadow: 0 0 2px Red,inset 0 0 2px Red;
+}
+
+/* Tooltip container */
+.tooltip {
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.identname {
+  display: block;
+  position: absolute;
+  top: 1px;
+  min-width: 120px;
+  background-color: rgba(255, 255, 255, 0.50);
+  color: blue;
+  text-align: left !important;
+  padding: 3px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+}
+
+.identdetails {
+  display: block;
+  position: absolute;
+  visibility: hidden;
+  top: 1px;
+  min-width: 120px;
+  background-color: rgba(255, 255, 255, 0.50);
+  color: red;
+  text-align: left !important;
+  padding: 3px 0;
+  border-radius: 6px;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .identdetails {
+  visibility: visible;
+}
+.tooltip:hover .identname {
+  visibility: hidden;
+}

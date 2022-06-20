@@ -1,0 +1,66 @@
+img{
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* remove extra space below image */
+}
+
+.hidden {
+  display: none;
+}
+
+.bbox {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.69);
+  border-radius: 6px;
+  box-shadow: 0 0 2px red,inset 0 0 2px red;
+  pointer-events: inherit;
+}
+
+/* Tooltip container */
+.tooltip {
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden;
+  display: block;
+  position: absolute;
+  top: -35px;
+  min-width: 120px;
+  background-color: rgba(255, 255, 255, 0.69);
+  color: red;
+  text-align: center !important;
+  padding: 3px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+.App-footer {
+  background-color: rgb(51, 51, 51);
+  color: #ffffff;
+  min-height: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(2px + 1vmin);
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.imageDate {
+  min-height: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(2px + 1vmin);
+}

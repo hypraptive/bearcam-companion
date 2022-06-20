@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import FrameView from './FrameView';
+import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
-function App() {
+function App({ signOut, user }) {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className="headerImage">
+          <img width={200} height={65} src="/BearID-Project-Logo-PNG_inverse.png" alt="BearID Logo" />
+          </div>
+        <Heading level={5} color="white">Hello, {user.username} &nbsp;</Heading>
+        <Button onClick={signOut} color="gray">Sign out</Button>
+     </header>
+      <Heading level={4}>BearCam Companion</Heading>
+      <FrameView username={user.username} />
+      <footer className="App-footer">
+        <h2>&copy;2022 BearID Project</h2>
+      </footer>
     </div>
   );
 }
 
-export default App;
+export default withAuthenticator(App);

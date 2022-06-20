@@ -1,0 +1,26 @@
+type Identifications @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  user: String
+  objectsID: ID! @index(name: "byObjects")
+}
+
+type Objects @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  label: String
+  confidence: Float
+  width: Float
+  height: Float
+  left: Float
+  top: Float
+  imagesID: ID! @index(name: "byImages")
+  Identifications: [Identifications] @hasMany(indexName: "byObjects", fields: ["id"])
+}
+
+type Images @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  url: AWSURL
+  date: AWSDateTime
+  Objects: [Objects] @hasMany(indexName: "byImages", fields: ["id"])
+}
+ 

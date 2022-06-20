@@ -1,5 +1,6 @@
 import './FrameView.css';
 import { useState, useEffect, useRef } from 'react'
+import { Flex } from '@aws-amplify/ui-react';
 import Boxes from './Boxes';
 import React from 'react'
 import { FrameCollection } from './ui-components'
@@ -78,7 +79,19 @@ export function FrameView ({ username }) {
   //console.log("Image ID:", imageID);
 
     return(
-      <div>
+      <Flex
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="stretch"
+        alignContent="flex-start"
+        wrap="nowrap"
+      >
+        <div className="p-2" >
+          <FrameCollection itemsPerPage={4} overrideItems={({ item, index }) => ({
+            onClick: () => {updateFrame(item)}
+          })} />
+        </div>
+        <div className="p-2" >
           <div style={{position:'relative', margin:'auto', display: 'block'}}>
           <img id="refImage" ref={inputEl} src={imagePath} alt="bearcam frame" />
           {
@@ -86,13 +99,10 @@ export function FrameView ({ username }) {
             <Boxes  key={box.id} box={box} username={username} />
             )
           }
+          </div>
+          <div id="refImageDate" className="imageDate" ><h2>{imageDate}</h2></div>
         </div>
-        <div id="refImageDate" className="imageDate" ><h2>{imageDate}</h2></div>
-        <FrameCollection width={"100vw"} itemsPerPage={4} overrideItems={({ item, index }) => ({
-          //onClick: () => {imageID = item.id;}
-          onClick: () => {updateFrame(item)}
-        })} />
-      </div>
+      </Flex>
     )
 }
 

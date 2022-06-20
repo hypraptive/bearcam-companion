@@ -29,8 +29,8 @@ export default function FrameCollection(props) {
       isPaginated={true}
       searchPlaceholder="Search..."
       itemsPerPage={4}
-      direction="row"
-      alignItems="stretch"
+      direction="column"
+      justifyContent="left"
       items={items || []}
       {...rest}
       {...getOverrideProps(overrides, "FrameCollection")}
@@ -38,7 +38,7 @@ export default function FrameCollection(props) {
       {(item, index) => (
         <StandardCard
           images={item}
-          margin="10px 0px 0 0px"
+          margin="0px 0px 0 0px"
           key={item.id}
           {...(overrideItems && overrideItems({ item, index }))}
         ></StandardCard>

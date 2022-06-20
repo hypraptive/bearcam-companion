@@ -30,7 +30,7 @@ export default function FrameCollection(props) {
       searchPlaceholder="Search..."
       itemsPerPage={4}
       direction="column"
-      justifyContent="left"
+      justifyContent="stretch"
       items={items || []}
       {...rest}
       {...getOverrideProps(overrides, "FrameCollection")}

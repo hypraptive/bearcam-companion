@@ -53,7 +53,7 @@ export default function Boxes({ box, username }) {
     return(
           <div className="bbox tooltip" key={box.id}
             style={{top: boxTop, left: boxLeft, height: boxHeight, width: boxWidth }} >
-            <div className="identname">{identAgg[0][0]} ({Math.trunc(identAgg[0][1]*100/identCount)}%)
+            <div className="identname">{identAgg[0][0]} ({identAgg[0][1]}/{identCount} = {Math.trunc(identAgg[0][1]*100/identCount)}%)
             </div>
             <div className="identdetails">
               {

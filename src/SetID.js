@@ -177,8 +177,8 @@ export default function SetID ({ boxID, curList, username }) {
   return(
     <Flex direction="column">
       <SelectField
-        label={"Current selection: " + curSel}
-        placeholder="Pick one..."
+        label={"Your selection: " + curSel}
+        placeholder="Pick a bear..."
         options={bearList}
         onChange={(e) => handleIDSelect(e.target.value)}
       ></SelectField>

@@ -16,9 +16,11 @@ export function FrameView ({ username }) {
   const inputEl = useRef(null);
 
   function updateFrame(item) {
-    setImageID(item.id);
-    document.getElementById("refImage").src = item.url
-    document.getElementById("refImageDate").innerHTML = "<h2>" + item.date + "</h2>"
+    if (item){
+      setImageID(item.id);
+      document.getElementById("refImage").src = item.url
+      document.getElementById("refImageDate").innerHTML = "<h2>" + item.date + "</h2>"
+    }
   }
 
   useEffect(() => {
@@ -35,8 +37,9 @@ export function FrameView ({ username }) {
       const images = await DataStore.query(Images, Predicates.ALL, {sort: s => s.date(SortDirection.DESCENDING)});
       updateFrame(images[0]);
     }
-    getStartImage();
-  }, []);
+    if (imageID === "")
+      getStartImage();
+  });
 
     return(
       <Flex

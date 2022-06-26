@@ -1,6 +1,6 @@
 import './FrameView.css';
 import { useState, useEffect, useRef } from 'react'
-import { Flex, Button } from '@aws-amplify/ui-react';
+import { Flex } from '@aws-amplify/ui-react';
 import Boxes from './Boxes';
 import React from 'react'
 import { FrameCollection, AddImage } from './ui-components'

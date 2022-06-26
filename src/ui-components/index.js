@@ -26,6 +26,7 @@ export { default as SocialPost } from "./SocialPost";
 export { default as ReviewCard } from "./ReviewCard";
 export { default as Ampligram } from "./Ampligram";
 export { default as ProductDetail } from "./ProductDetail";
+export { default as AddImage } from "./AddImage";
 export { default as MarketingFooter } from "./MarketingFooter";
 export { default as HeroLayout3 } from "./HeroLayout3";
 export { default as ContactUs } from "./ContactUs";

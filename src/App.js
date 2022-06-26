@@ -14,7 +14,7 @@ function App({ signOut, user }) {
         <Button onClick={signOut} color="gray">Sign out</Button>
      </header>
       <Heading level={4}>Bearcam Companion</Heading>
-      <FrameView username={user.username} />
+      <FrameView user={user} />
       <footer className="App-footer">
         <h2>&copy;2022 BearID Project</h2>
       </footer>

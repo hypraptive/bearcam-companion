@@ -2,6 +2,7 @@ import './FrameView.css';
 import { useState, useEffect, useRef } from 'react'
 import { Flex } from '@aws-amplify/ui-react';
 import Boxes from './Boxes';
+import BoxDetection from './BoxDetection';
 import React from 'react'
 import { FrameCollection, AddImage } from './ui-components'
 import { DataStore, Predicates, SortDirection } from "aws-amplify";
@@ -11,13 +12,13 @@ const imagePath = ""
 const imageDate = "LOADING..."
 
 export function FrameView ({ user }) {
-  const [imageID, setImageID] = useState("");
+  const [curImage, setCurImage] = useState([]);
   const [boxList, setBoxList] = useState([]);
   const inputEl = useRef(null);
 
   function updateFrame(item) {
     if (item){
-      setImageID(item.id);
+      setCurImage(item);
       document.getElementById("refImage").src = item.url
       document.getElementById("refImageDate").innerHTML = "<h2>" + item.date + "</h2>"
     }
@@ -33,19 +34,19 @@ export function FrameView ({ user }) {
 
   useEffect(() => {
     async function getBoxes() {
-      const boxes = await DataStore.query(Objects, c => c.imagesID("eq", imageID));
+      const boxes = await DataStore.query(Objects, c => c.imagesID("eq", curImage.id));
       setBoxList(boxes);
     }
     getBoxes();
     DataStore.observe(Objects).subscribe(getBoxes);
-  }, [imageID]);
+  }, [curImage]);
 
   useEffect(() => {
     async function getStartImage() {
       const images = await DataStore.query(Images, Predicates.ALL, {sort: s => s.date(SortDirection.DESCENDING)});
       updateFrame(images[0]);
     }
-    if (imageID === "")
+    if (curImage.length === 0)
       getStartImage();
   });
 
@@ -73,6 +74,12 @@ export function FrameView ({ user }) {
             }
             </div>
             <div id="refImageDate" className="imageDate" ><h2>{imageDate}</h2></div>
+            <div>
+            {isAdmin()
+              ? <BoxDetection image={curImage} />
+              : <div/>
+            }
+            </div>
           </div>
         </Flex>
         <div>

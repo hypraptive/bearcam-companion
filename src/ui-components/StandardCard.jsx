@@ -84,45 +84,6 @@ export default function StandardCard(props) {
             children={images?.date}
             {...getOverrideProps(overrides, "2021-11-14T17:28:00.000Z")}
           ></Text>
-          <Text
-            fontFamily="Inter"
-            fontSize="10px"
-            fontWeight="400"
-            color="rgba(13,26,38,1)"
-            lineHeight="24px"
-            textAlign="center"
-            display="none"
-            direction="column"
-            justifyContent="flex-start"
-            letterSpacing="0px"
-            shrink="0"
-            alignSelf="stretch"
-            objectFit="cover"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="4bds 3 ba 2,530 sqft - Active"
-            {...getOverrideProps(overrides, "4bds 3 ba 2,530 sqft - Active")}
-          ></Text>
-          <Text
-            fontFamily="Inter"
-            fontSize="10px"
-            fontWeight="400"
-            color="rgba(48,64,80,1)"
-            lineHeight="24px"
-            textAlign="center"
-            display="none"
-            direction="column"
-            justifyContent="flex-start"
-            shrink="0"
-            alignSelf="stretch"
-            objectFit="cover"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="832 34th Ave, Seattle, WA 98122"
-            {...getOverrideProps(overrides, "832 34th Ave, Seattle, WA 98122")}
-          ></Text>
         </Flex>
       </Flex>
     </Flex>

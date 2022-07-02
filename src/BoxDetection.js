@@ -65,6 +65,7 @@ export default function BoxDetection({image}) {
         //console.log(JSON.stringify(object, null, 2))
         console.log("name", object.name)
         console.log("confidence", object.metadata.confidence)
+        setBoxList(object.boundingBoxes)
         object.boundingBoxes.forEach(box => {
           console.log("box", box)
           saveBox(object.name, object.metadata.confidence,
@@ -82,7 +83,7 @@ export default function BoxDetection({image}) {
     //    console.log("Bounding Box: ", x.boundingBox)
     //    console.log("Images ID", image.id)
     //  })
-     setBoxList([])
+     //setBoxList([])
    }
 
     // const strBears = JSON.stringify(jBears, null, 2)

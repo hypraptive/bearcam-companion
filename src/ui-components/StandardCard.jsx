@@ -37,8 +37,8 @@ export default function StandardCard(props) {
       {...getOverrideProps(overrides, "StandardCard")}
     >
       <Image
-        width="160px"
-        height="90px"
+        width="320px"
+        height="180px"
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
@@ -49,7 +49,8 @@ export default function StandardCard(props) {
       <Flex
         gap="16px"
         direction="column"
-        width="160px"
+        width="320px"
+        height="20px"
         justifyContent="center"
         alignItems="center"
         shrink="0"

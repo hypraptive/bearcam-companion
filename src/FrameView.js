@@ -60,8 +60,9 @@ export function FrameView ({ user }) {
           wrap="nowrap"
         >
           <div className="p-2" >
-            <FrameCollection itemsPerPage={4} overrideItems={({ item, index }) => ({
-              onClick: () => {updateFrame(item)}
+            <FrameCollection itemsPerPage={3} overrideItems={({ item, index }) => ({
+              onClick: () => {updateFrame(item)},
+              siblingCount: 1
             })} />
           </div>
           <div className="p-2" >

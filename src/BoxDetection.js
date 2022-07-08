@@ -61,7 +61,7 @@ export default function BoxDetection({image}) {
     console.log("imageID", image.id)
     labels.forEach(object => {
       //console.log("Label", object.name)
-      if (object.name === "Bear") {
+      //if (object.name === "Bear") {
         //console.log(JSON.stringify(object, null, 2))
         console.log("name", object.name)
         console.log("confidence", object.metadata.confidence)
@@ -71,7 +71,7 @@ export default function BoxDetection({image}) {
           saveBox(object.name, object.metadata.confidence,
                   box.width, box.height, box.left, box.top, image.id)
         })
-      }
+      //}
       //const { name, boundingBoxes } = object
     });
     // const jBears = response.labels.filter(obj => {

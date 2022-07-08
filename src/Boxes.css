@@ -22,6 +22,21 @@
 }
 
 /* Tooltip text */
+.labelname {
+  display: block;
+  position: absolute;
+  top: -30px;
+  min-width: 120px;
+  background-color: rgba(255, 255, 255, 0.50);
+  color: black;
+  text-align: left !important;
+  padding: 3px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+}
+
 .identname {
   display: block;
   position: absolute;

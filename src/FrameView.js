@@ -1,6 +1,6 @@
 import './FrameView.css';
 import { useState, useEffect, useRef } from 'react'
-import { Flex } from '@aws-amplify/ui-react';
+import { Flex, CheckboxField } from '@aws-amplify/ui-react';
 import Boxes from './Boxes';
 import BoxDetection from './BoxDetection';
 import React from 'react'
@@ -14,6 +14,7 @@ const imageDate = "LOADING..."
 export function FrameView ({ user }) {
   const [curImage, setCurImage] = useState([]);
   const [boxList, setBoxList] = useState([]);
+  const [bearsOnly, setBearsOnly] = useState(true);
   const inputEl = useRef(null);
 
   function updateFrame(item) {
@@ -35,11 +36,15 @@ export function FrameView ({ user }) {
   useEffect(() => {
     async function getBoxes() {
       const boxes = await DataStore.query(Objects, c => c.imagesID("eq", curImage.id));
-      setBoxList(boxes);
+      if (bearsOnly) {
+        setBoxList(boxes.filter(box => box.label === "Bear"));
+      } else {
+        setBoxList(boxes);
+      }
     }
     getBoxes();
     DataStore.observe(Objects).subscribe(getBoxes);
-  }, [curImage]);
+  }, [curImage, bearsOnly]);
 
   useEffect(() => {
     async function getStartImage() {
@@ -75,6 +80,8 @@ export function FrameView ({ user }) {
             }
             </div>
             <div id="refImageDate" className="imageDate" ><h2>{imageDate}</h2></div>
+            <CheckboxField label="Show All Boxes" name="bearsOnly" value="false"
+                onChange={(e) => setBearsOnly(!e.target.checked)} />;
             <div>
             {isAdmin()
               ? <BoxDetection image={curImage} />

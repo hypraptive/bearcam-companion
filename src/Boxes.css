@@ -79,10 +79,27 @@
   z-index: 1;
 }
 
+.labelname {
+  display: block;
+  position: absolute;
+  visibility: hidden;
+  top: 1px;
+  min-width: 120px;
+  background-color: rgba(255, 255, 255, 0.50);
+  color: red;
+  text-align: left !important;
+  padding: 3px 0;
+  border-radius: 6px;
+  z-index: 1;
+}
+
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .identdetails {
   visibility: visible;
 }
 .tooltip:hover .identname {
   visibility: hidden;
+}
+.tooltip:hover .labelname {
+  visibility: visible;
 }

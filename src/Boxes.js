@@ -72,7 +72,7 @@ export default function Boxes({ box, username }) {
       return(
             <div className="bbox tooltip" key={box.id}
               style={{top: boxTop, left: boxLeft, height: boxHeight, width: boxWidth }} >
-              <div className="identdetails">{box.label} ({Math.trunc(box.confidence)}%)</div>
+              <div className="labelname">{box.label} ({Math.trunc(box.confidence)}%)</div>
             </div>
       )
     }

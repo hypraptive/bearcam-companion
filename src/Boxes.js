@@ -49,22 +49,31 @@ export default function Boxes({ box, username }) {
       getIdents();
       DataStore.observe(Identifications).subscribe(getIdents);
     }, [box.id]);
+    //<div className="labelname">{box.label} ({Math.trunc(box.confidence)}%)</div>
 
-    return(
-          <div className="bbox tooltip" key={box.id}
-            style={{top: boxTop, left: boxLeft, height: boxHeight, width: boxWidth }} >
-            <div>
-              <div className="labelname">{box.label} ({Math.trunc(box.confidence)}%)</div>
-              <div className="identname">{identAgg[0][0]} ({identAgg[0][1]}/{identCount} = {Math.trunc(identAgg[0][1]*100/identCount)}%)</div>
+    if (box.label === "Bear") {
+      return(
+            <div className="bbox-bear tooltip" key={box.id}
+              style={{top: boxTop, left: boxLeft, height: boxHeight, width: boxWidth }} >
+              <div>
+                <div className="identname">{identAgg[0][0]} ({identAgg[0][1]}/{identCount} = {Math.trunc(identAgg[0][1]*100/identCount)}%)</div>
+              </div>
+              <div className="identdetails">
+                {
+                  identAgg.map( (ident) =>
+                  <BoxIDs  key={box.id + "-" + ident[0]} ident={ident} />
+                  )
+                }
+                <SetID boxID={box.id} curList={identList} username={username} />
+              </div>
             </div>
-            <div className="identdetails">
-              {
-                identAgg.map( (ident) =>
-                <BoxIDs  key={box.id + "-" + ident[0]} ident={ident} />
-                )
-              }
-              <SetID boxID={box.id} curList={identList} username={username} />
+      )
+    } else {
+      return(
+            <div className="bbox tooltip" key={box.id}
+              style={{top: boxTop, left: boxLeft, height: boxHeight, width: boxWidth }} >
+              <div className="identdetails">{box.label} ({Math.trunc(box.confidence)}%)</div>
             </div>
-          </div>
-    )
+      )
+    }
 }

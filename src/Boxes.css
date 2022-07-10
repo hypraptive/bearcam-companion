@@ -6,13 +6,26 @@
   position: absolute;
   border: 2px solid rgba(255, 255, 255, 0.69);
   border-radius: 6px;
-  box-shadow: 0 0 2px Blue,inset 0 0 2px Blue;
+  box-shadow: 0 0 2px Red,inset 0 0 2px Red;
   pointer-events: inherit;
 }
 
 .bbox:hover {
-  border: 2px solid rgba(255, 255, 255, 0.69);
+  border: 2px solid rgba(255, 0, 0, 0.69);
   box-shadow: 0 0 2px Red,inset 0 0 2px Red;
+}
+
+.bbox-bear {
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.69);
+  border-radius: 6px;
+  box-shadow: 0 0 2px Blue,inset 0 0 2px Blue;
+  pointer-events: inherit;
+}
+
+.bbox-bear:hover {
+  border: 2px solid rgba(0, 0, 255, 0.69);
+  box-shadow: 0 0 2px Blue,inset 0 0 2px Blue;
 }
 
 /* Tooltip container */
@@ -59,7 +72,7 @@
   top: 1px;
   min-width: 120px;
   background-color: rgba(255, 255, 255, 0.50);
-  color: red;
+  color: blue;
   text-align: left !important;
   padding: 3px 0;
   border-radius: 6px;

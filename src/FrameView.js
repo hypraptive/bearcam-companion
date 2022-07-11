@@ -81,7 +81,7 @@ export function FrameView ({ user }) {
             </div>
             <div id="refImageDate" className="imageDate" ><h2>{imageDate}</h2></div>
             <CheckboxField label="Show All Boxes" name="bearsOnly" value="false"
-                onChange={(e) => setBearsOnly(!e.target.checked)} />;
+                onChange={(e) => setBearsOnly(!e.target.checked)} />
             <div>
             {isAdmin()
               ? <BoxDetection image={curImage} />

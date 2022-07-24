@@ -3,8 +3,9 @@ import { useState, useEffect, useRef } from 'react'
 import { Flex, CheckboxField } from '@aws-amplify/ui-react';
 import Boxes from './Boxes';
 import BoxDetection from './BoxDetection';
+import UploadImage from './UploadImage';
 import React from 'react'
-import { FrameCollection, AddImage } from './ui-components'
+import { FrameCollection } from './ui-components'
 import { DataStore, Predicates, SortDirection } from "aws-amplify";
 import { Images, Objects } from "./models";
 
@@ -33,7 +34,7 @@ export function FrameView ({ user }) {
     return false;
   }
 
-  useEffect(() => {
+useEffect(() => {
     async function getBoxes() {
       const boxes = await DataStore.query(Objects, c => c.imagesID("eq", curImage.id));
       if (bearsOnly) {
@@ -66,8 +67,7 @@ export function FrameView ({ user }) {
         >
           <div className="p-2" >
             <FrameCollection itemsPerPage={3} overrideItems={({ item, index }) => ({
-              onClick: () => {updateFrame(item)},
-              siblingCount: 1
+              onClick: () => {updateFrame(item)}
             })} />
           </div>
           <div className="p-2" >
@@ -92,7 +92,10 @@ export function FrameView ({ user }) {
         </Flex>
         <div>
           {isAdmin()
-            ? <AddImage/>
+            ?
+              <div>
+                <UploadImage/>
+              </div>
             : <div/>
           }
         </div>

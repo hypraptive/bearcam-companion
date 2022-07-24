@@ -2,7 +2,12 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-
+export declare class S3Object {
+  readonly bucket?: string | null;
+  readonly region?: string | null;
+  readonly key?: string | null;
+  constructor(init: ModelInit<S3Object>);
+}
 
 type IdentificationsMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
@@ -48,6 +53,7 @@ export declare class Images {
   readonly url?: string | null;
   readonly date?: string | null;
   readonly Objects?: (Objects | null)[] | null;
+  readonly file?: S3Object | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Images, ImagesMetaData>);

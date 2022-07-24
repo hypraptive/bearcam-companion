@@ -4,10 +4,11 @@ import { schema } from './schema';
 
 
 
-const { Identifications, Objects, Images } = initSchema(schema);
+const { Identifications, Objects, Images, S3Object } = initSchema(schema);
 
 export {
   Identifications,
   Objects,
-  Images
+  Images,
+  S3Object
 };

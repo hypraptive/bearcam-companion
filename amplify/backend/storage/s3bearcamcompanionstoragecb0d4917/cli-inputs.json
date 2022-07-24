@@ -1,0 +1,13 @@
+{
+  "resourceName": "s3bearcamcompanionstoragecb0d4917",
+  "bucketName": "bearcamcompanion-storage-cb0d4917",
+  "policyUUID": "709c4dec",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ]
+}

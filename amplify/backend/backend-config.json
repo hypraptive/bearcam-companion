@@ -60,5 +60,12 @@
       "dependsOn": [],
       "identifyType": "identifyLabels"
     }
+  },
+  "storage": {
+    "s3bearcamcompanionstoragecb0d4917": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }

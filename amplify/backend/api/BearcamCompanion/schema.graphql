@@ -1,3 +1,9 @@
+type S3Object {
+  bucket: String
+  region: String
+  key: String
+}
+
 type Identifications @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
@@ -22,5 +28,6 @@ type Images @model @auth(rules: [{allow: public}]) {
   url: AWSURL
   date: AWSDateTime
   Objects: [Objects] @hasMany(indexName: "byImages", fields: ["id"])
+  file: S3Object
 }
  

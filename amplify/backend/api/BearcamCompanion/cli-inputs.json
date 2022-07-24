@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "BearcamCompanion",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-3f181861-5da7-49c3-9203-ae8e6246b568/amplify/backend/api/BearcamCompanion/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-8a51c101-b193-4cdf-86a8-8fb8fee74edf/amplify/backend/api/BearcamCompanion/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",

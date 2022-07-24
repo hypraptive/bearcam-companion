@@ -22,5 +22,11 @@ export type AmplifyDependentResourcesAttributes = {
             "region": "string",
             "type": "string"
         }
+    },
+    "storage": {
+        "s3bearcamcompanionstoragecb0d4917": {
+            "BucketName": "string",
+            "Region": "string"
+        }
     }
 }

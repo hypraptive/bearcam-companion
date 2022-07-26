@@ -2,7 +2,6 @@ import './FrameView.css';
 import { useState, useEffect, useRef } from 'react'
 import { Flex, CheckboxField } from '@aws-amplify/ui-react';
 import Boxes from './Boxes';
-import BoxDetection from './BoxDetection';
 import UploadImage from './UploadImage';
 import React from 'react'
 import { FrameCollection } from './ui-components'

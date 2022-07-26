@@ -14,6 +14,16 @@
     "categories": {
       "auth": {
         "BearcamCompanion": {}
+      },
+      "function": {
+        "bcOnImagesFindObjects": {
+          "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
+          "s3Key": "amplify-builds/bcOnImagesFindObjects-67597a36514878506945-build.zip"
+        },
+        "bearcamcompanionbcNodeLayer": {
+          "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
+          "s3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersiond5105ef8-build.zip"
+        }
       }
     }
   }

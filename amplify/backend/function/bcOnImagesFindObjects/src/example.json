@@ -1,0 +1,62 @@
+{
+    "Records": [
+        {
+            "eventID": "e2f0892afd8214eda18c517f490095f3",
+            "eventName": "INSERT",
+            "eventVersion": "1.1",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-east-1",
+            "dynamodb": {
+                "ApproximateCreationDateTime": 1658629859,
+                "Keys": {
+                    "id": {
+                        "S": "2634ff96-7657-40f7-91c6-fdfaf01f7f4c"
+                    }
+                },
+                "NewImage": {
+                    "date": {
+                        "S": "2022-07-23T18:35:01Z"
+                    },
+                    "createdAt": {
+                        "S": "2022-07-24T02:30:58.898Z"
+                    },
+                    "file": {
+                        "M": {
+                            "bucket": {
+                                "S": "bearcamcompanion-storage-cb0d491743951-staging"
+                            },
+                            "region": {
+                                "S": "us-east-1"
+                            },
+                            "key": {
+                                "S": "20220724T013450_17489.ts.jpg"
+                            }
+                        }
+                    },
+                    "_lastChangedAt": {
+                        "N": "1658629858923"
+                    },
+                    "__typename": {
+                        "S": "Images"
+                    },
+                    "id": {
+                        "S": "2634ff96-7657-40f7-91c6-fdfaf01f7f4c"
+                    },
+                    "_version": {
+                        "N": "1"
+                    },
+                    "url": {
+                        "S": "https://files.explore.org/sn/1970/8/23/20220724T013450_17489.ts.jpg"
+                    },
+                    "updatedAt": {
+                        "S": "2022-07-24T02:30:58.898Z"
+                    }
+                },
+                "SequenceNumber": "303391500000000014161100908",
+                "SizeBytes": 392,
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:us-east-1:664488008388:table/Images-ngwvkwkzrjffhngeck4ibotafu-staging/stream/2022-05-21T08:10:54.006"
+        }
+    ]
+}

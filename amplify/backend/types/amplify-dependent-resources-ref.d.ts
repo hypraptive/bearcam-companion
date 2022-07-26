@@ -28,5 +28,16 @@ export type AmplifyDependentResourcesAttributes = {
             "BucketName": "string",
             "Region": "string"
         }
+    },
+    "function": {
+        "bcOnImagesFindObjects": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "bearcamcompanionbcNodeLayer": {
+            "Arn": "string"
+        }
     }
 }

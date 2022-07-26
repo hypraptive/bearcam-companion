@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "api": {
+      "BearcamCompanion": [
+        "Query"
+      ]
+    },
+    "storage": {
+      "s3bearcamcompanionstoragecb0d4917": [
+        "read"
+      ],
+      "Objects:@model(appsync)": [
+        "create"
+      ],
+      "Images:@model(appsync)": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "bearcamcompanionbcNodeLayer",
+      "env": "staging",
+      "version": "Always choose latest version",
+      "isLatestVersionSelected": true
+    }
+  ]
+}

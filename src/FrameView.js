@@ -21,7 +21,9 @@ export function FrameView ({ user }) {
     if (item){
       setCurImage(item);
       document.getElementById("refImage").src = item.url
-      document.getElementById("refImageDate").innerHTML = "<h2>" + item.date + "</h2>"
+      var awsDate = new Date(item.date)
+      var dateStr = awsDate.toString();
+      document.getElementById("refImageDate").innerHTML = "<h2>Camera time: " + dateStr + "</h2>"
     }
   }
 
@@ -35,14 +37,19 @@ export function FrameView ({ user }) {
 
 useEffect(() => {
     async function getBoxes() {
-      const boxes = await DataStore.query(Objects, c => c.imagesID("eq", curImage.id));
-      if (bearsOnly) {
-        setBoxList(boxes.filter(box => box.label === "Bear"));
-      } else {
-        setBoxList(boxes);
+      if (curImage.id) {
+        var boxes = await DataStore.query(Objects, c => c.imagesID("eq", curImage.id));
+        console.log("Got boxes for", curImage.id)
+        if (bearsOnly) {
+          setBoxList(boxes.filter(box => box.label === "Bear"));
+        } else {
+          setBoxList(boxes);
+        }
       }
     }
+    console.log("Get boxes for", curImage.id)
     getBoxes();
+    //DataStore.observe(Objects).subscribe(getBoxes);
     DataStore.observe(Objects).subscribe(getBoxes);
   }, [curImage, bearsOnly]);
 

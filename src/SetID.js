@@ -5,9 +5,13 @@ import { Identifications } from "./models";
 
 export default function SetID ({ boxID, curList, username }) {
   const bearList = [
-    'Unknown',
     'Not a bear',
-    'Cub',
+    'Unknown',
+    'Unknown Adult',
+    'Unknown Subadult',
+    'Cub (COY)',
+    'Cub (1.5yo)',
+    'Cub (2.5yo)',
     '014',
     '015',
     '017',

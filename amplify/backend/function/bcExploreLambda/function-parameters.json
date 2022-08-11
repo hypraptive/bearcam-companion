@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "api": {
+      "BearcamCompanion": [
+        "Mutation"
+      ]
+    },
+    "storage": {
+      "s3bearcamcompanionstoragecb0d4917": [
+        "create",
+        "read",
+        "update"
+      ],
+      "Images:@model(appsync)": [
+        "create",
+        "read",
+        "update"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "bearcamcompanionbcNodeLayer",
+      "env": "staging",
+      "version": "Always choose latest version",
+      "isLatestVersionSelected": true
+    }
+  ]
+}

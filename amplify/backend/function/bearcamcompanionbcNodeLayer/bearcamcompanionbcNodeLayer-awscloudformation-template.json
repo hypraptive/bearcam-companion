@@ -20,7 +20,7 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersiond5105ef8": {
+    "LambdaLayerVersion4a3d47b3": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": {
@@ -51,19 +51,19 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPrivated5105ef8": {
+    "LambdaLayerPermissionPrivate4a3d47b3": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
         "LayerVersionArn": {
-          "Ref": "LambdaLayerVersiond5105ef8"
+          "Ref": "LambdaLayerVersion4a3d47b3"
         },
         "Principal": {
           "Ref": "AWS::AccountId"
         }
       }
     },
-    "LambdaLayerVersionbfc959ff": {
+    "LambdaLayerVersion3ea431cf": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": [
@@ -73,9 +73,9 @@
           "S3Bucket": {
             "Ref": "deploymentBucketName"
           },
-          "S3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersionbfc959ff-build.zip"
+          "S3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion3ea431cf-build.zip"
         },
-        "Description": "Updated layer version 2022-07-26T01:30:00.575Z",
+        "Description": "Updated layer version 2022-07-29T22:03:44.839Z",
         "LayerName": {
           "Fn::Sub": [
             "bearcamcompanionbcNodeLayer-${env}",
@@ -90,85 +90,11 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPrivatebfc959ff": {
+    "LambdaLayerPermissionPrivate3ea431cf": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:us-east-1:664488008388:layer:bearcamcompanionbcNodeLayer-staging:3",
-        "Principal": {
-          "Ref": "AWS::AccountId"
-        }
-      }
-    },
-    "LambdaLayerVersion7610ca6d": {
-      "Type": "AWS::Lambda::LayerVersion",
-      "Properties": {
-        "CompatibleRuntimes": [
-          "nodejs14.x"
-        ],
-        "Content": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion7610ca6d-build.zip"
-        },
-        "Description": "Updated layer version 2022-07-26T00:39:42.046Z",
-        "LayerName": {
-          "Fn::Sub": [
-            "bearcamcompanionbcNodeLayer-${env}",
-            {
-              "env": {
-                "Ref": "env"
-              }
-            }
-          ]
-        }
-      },
-      "DeletionPolicy": "Delete",
-      "UpdateReplacePolicy": "Retain"
-    },
-    "LambdaLayerPermissionPrivate7610ca6d": {
-      "Type": "AWS::Lambda::LayerVersionPermission",
-      "Properties": {
-        "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:us-east-1:664488008388:layer:bearcamcompanionbcNodeLayer-staging:2",
-        "Principal": {
-          "Ref": "AWS::AccountId"
-        }
-      }
-    },
-    "LambdaLayerVersion47d2bc17": {
-      "Type": "AWS::Lambda::LayerVersion",
-      "Properties": {
-        "CompatibleRuntimes": [
-          "nodejs14.x"
-        ],
-        "Content": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion47d2bc17-build.zip"
-        },
-        "Description": "Updated layer version 2022-07-25T06:27:10.477Z",
-        "LayerName": {
-          "Fn::Sub": [
-            "bearcamcompanionbcNodeLayer-${env}",
-            {
-              "env": {
-                "Ref": "env"
-              }
-            }
-          ]
-        }
-      },
-      "DeletionPolicy": "Delete",
-      "UpdateReplacePolicy": "Retain"
-    },
-    "LambdaLayerPermissionPrivate47d2bc17": {
-      "Type": "AWS::Lambda::LayerVersionPermission",
-      "Properties": {
-        "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:us-east-1:664488008388:layer:bearcamcompanionbcNodeLayer-staging:1",
+        "LayerVersionArn": "arn:aws:lambda:us-east-1:664488008388:layer:bearcamcompanionbcNodeLayer-staging:10",
         "Principal": {
           "Ref": "AWS::AccountId"
         }
@@ -178,7 +104,7 @@
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersiond5105ef8"
+        "Ref": "LambdaLayerVersion4a3d47b3"
       }
     }
   }

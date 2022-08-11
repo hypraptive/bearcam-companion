@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "paths": {
+    "/explore": {
+      "name": "/explore",
+      "lambdaFunction": "bcExploreLambda",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    },
+    "/": {
+      "name": "/",
+      "lambdaFunction": "bcExploreLambda",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
+    }
+  }
+}

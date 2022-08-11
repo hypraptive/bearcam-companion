@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-bearcamcompanion-staging-43951-unauthRole",
       "StackName": "amplify-bearcamcompanion-staging-43951",
       "StackId": "arn:aws:cloudformation:us-east-1:664488008388:stack/amplify-bearcamcompanion-staging-43951/0df03810-d8c0-11ec-9e2a-1200de716377",
-      "AmplifyAppId": "d7ijzylsc7qfm"
+      "AmplifyAppId": "d7ijzylsc7qfm",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-bearcamcompanion-staging-43951-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
@@ -22,7 +23,11 @@
         },
         "bearcamcompanionbcNodeLayer": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
-          "s3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersiond5105ef8-build.zip"
+          "s3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion4a3d47b3-build.zip"
+        },
+        "bcExploreLambda": {
+          "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
+          "s3Key": "amplify-builds/bcExploreLambda-4136517946577938514c-build.zip"
         }
       }
     }

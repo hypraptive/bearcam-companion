@@ -1,0 +1,11 @@
+{
+  "httpMethod": "GET",
+  "path": "/explore/list",
+  "queryStringParameters": {
+    "limit": "4",
+    "feed": "brown-bear-salmon-cam-brooks-falls"
+  },
+  "headers": {
+    "Content-Type": "application/json"
+  }
+}

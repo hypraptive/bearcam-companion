@@ -1,0 +1,9 @@
+{
+  "httpMethod": "POST",
+  "path": "/explore/latest",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "queryStringParameters": {},
+  "body": '{"feed": "brown-bear-salmon-cam-brooks-falls"}'
+}

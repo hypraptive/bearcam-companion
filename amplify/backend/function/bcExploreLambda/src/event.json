@@ -1,0 +1,9 @@
+{
+  "httpMethod": "POST",
+  "path": "/explore/latest",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "queryStringParameters": {},
+  "body": '{"feed": "brown-bear-salmon-cam-brooks-falls","url": "https://files.explore.org/sn/1970/8/25/20220730T182435_52035.ts.jpg","date": "2022-07-30T11:25:43-07:00"}'
+}

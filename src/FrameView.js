@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Flex, CheckboxField } from '@aws-amplify/ui-react';
 import Boxes from './Boxes';
 import UploadImage from './UploadImage';
+import GetLatestImage from './GetLatestImage';
 import React from 'react'
 import { FrameCollection } from './ui-components'
 import { DataStore, Predicates, SortDirection } from "aws-amplify";
@@ -94,6 +95,7 @@ useEffect(() => {
           {isAdmin()
             ?
               <div>
+                <GetLatestImage/>
                 <UploadImage/>
               </div>
             : <div/>

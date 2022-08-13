@@ -20,50 +20,7 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersion4a3d47b3": {
-      "Type": "AWS::Lambda::LayerVersion",
-      "Properties": {
-        "CompatibleRuntimes": {
-          "Ref": "runtimes"
-        },
-        "Content": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
-        },
-        "Description": {
-          "Ref": "description"
-        },
-        "LayerName": {
-          "Fn::Sub": [
-            "bearcamcompanionbcNodeLayer-${env}",
-            {
-              "env": {
-                "Ref": "env"
-              }
-            }
-          ]
-        }
-      },
-      "DeletionPolicy": "Delete",
-      "UpdateReplacePolicy": "Retain"
-    },
-    "LambdaLayerPermissionPrivate4a3d47b3": {
-      "Type": "AWS::Lambda::LayerVersionPermission",
-      "Properties": {
-        "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": {
-          "Ref": "LambdaLayerVersion4a3d47b3"
-        },
-        "Principal": {
-          "Ref": "AWS::AccountId"
-        }
-      }
-    },
-    "LambdaLayerVersion3ea431cf": {
+    "LambdaLayerVersion175aa972": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": [
@@ -73,9 +30,9 @@
           "S3Bucket": {
             "Ref": "deploymentBucketName"
           },
-          "S3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion3ea431cf-build.zip"
+          "S3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion175aa972-build.zip"
         },
-        "Description": "Updated layer version 2022-07-29T22:03:44.839Z",
+        "Description": "Updated layer version 2022-08-12T07:46:14.852Z",
         "LayerName": {
           "Fn::Sub": [
             "bearcamcompanionbcNodeLayer-${env}",
@@ -90,11 +47,11 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPrivate3ea431cf": {
+    "LambdaLayerPermissionPrivate175aa972": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:us-east-1:664488008388:layer:bearcamcompanionbcNodeLayer-staging:10",
+        "LayerVersionArn": "arn:aws:lambda:us-east-1:664488008388:layer:bearcamcompanionbcNodeLayer-staging:13",
         "Principal": {
           "Ref": "AWS::AccountId"
         }
@@ -104,7 +61,7 @@
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersion4a3d47b3"
+        "Ref": "LambdaLayerVersion175aa972"
       }
     }
   }

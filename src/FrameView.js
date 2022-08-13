@@ -1,4 +1,5 @@
 import './FrameView.css';
+import { Hub } from "@aws-amplify/core";
 import { useState, useEffect, useRef } from 'react'
 import { Flex, CheckboxField } from '@aws-amplify/ui-react';
 import Boxes from './Boxes';
@@ -37,7 +38,31 @@ export function FrameView ({ user }) {
     return false;
   }
 
-useEffect(() => {
+  useEffect(() => {
+    // Create listener that will stop observing the model once the sync process is done
+    const removeListener = Hub.listen("datastore", async (capsule) => {
+      const {
+        payload: { event, data },
+      } = capsule;
+
+      console.log("DataStore event", event, data);
+
+      if (event === "ready") {
+        const images = await DataStore.query(Images, Predicates.ALL, {sort: s => s.date(SortDirection.DESCENDING)});
+        updateFrame(images[0]);
+      }
+    });
+
+    // Start the DataStore, this kicks-off the sync process.
+    DataStore.start();
+
+    return () => {
+      removeListener();
+    };
+  }, []);
+
+
+  useEffect(() => {
     async function getBoxes() {
       if (curImage.id) {
         var boxes = await DataStore.query(Objects, c => c.imagesID("eq", curImage.id));
@@ -54,15 +79,6 @@ useEffect(() => {
     //DataStore.observe(Objects).subscribe(getBoxes);
     DataStore.observe(Objects).subscribe(getBoxes);
   }, [curImage, bearsOnly]);
-
-  useEffect(() => {
-    async function getStartImage() {
-      const images = await DataStore.query(Images, Predicates.ALL, {sort: s => s.date(SortDirection.DESCENDING)});
-      updateFrame(images[0]);
-    }
-    if (curImage.length === 0)
-      getStartImage();
-  });
 
     return(
       <div>

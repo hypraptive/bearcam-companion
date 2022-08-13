@@ -2,7 +2,7 @@ import './FrameView.css';
 import { useState, useEffect, useRef } from 'react'
 import { Flex, CheckboxField } from '@aws-amplify/ui-react';
 import Boxes from './Boxes';
-import UploadImage from './UploadImage';
+//import UploadImage from './UploadImage';
 import GetLatestImage from './GetLatestImage';
 import GetImageList from './GetImageList';
 import React from 'react'
@@ -98,7 +98,6 @@ useEffect(() => {
               <div>
                 <GetLatestImage/>
                 <GetImageList/>
-                <UploadImage/>
               </div>
             : <div/>
           }

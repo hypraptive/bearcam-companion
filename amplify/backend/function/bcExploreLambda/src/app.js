@@ -132,6 +132,9 @@ async function createImageEntry (fileUrl, createdDate) {
                 key
               }
               _version
+              createdAt
+              updatedAt
+              _lastChangedAt
             }
           }
         `,

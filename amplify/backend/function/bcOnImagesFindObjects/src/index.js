@@ -39,6 +39,9 @@ const query = /* GraphQL */ `
     	top
     	imagesID
     	_version
+      createdAt
+      updatedAt
+      _lastChangedAt
     }
   }
 `;

@@ -4,6 +4,7 @@ import { Flex, CheckboxField } from '@aws-amplify/ui-react';
 import Boxes from './Boxes';
 import UploadImage from './UploadImage';
 import GetLatestImage from './GetLatestImage';
+import GetImageList from './GetImageList';
 import React from 'react'
 import { FrameCollection } from './ui-components'
 import { DataStore, Predicates, SortDirection } from "aws-amplify";
@@ -96,6 +97,7 @@ useEffect(() => {
             ?
               <div>
                 <GetLatestImage/>
+                <GetImageList/>
                 <UploadImage/>
               </div>
             : <div/>

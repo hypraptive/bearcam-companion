@@ -1,5 +1,5 @@
 import './FrameView.css';
-import { Button, Collection, Card, Image, View, Divider, Heading } from "@aws-amplify/ui-react";
+import { Button, Collection, Card, Image, View, Divider, Text } from "@aws-amplify/ui-react";
 import React from 'react'
 import { useState } from 'react'
 import { Amplify, API } from 'aws-amplify';
@@ -77,7 +77,7 @@ export function GetImageList () {
           />
           <View padding="xs">
             <Divider padding="xs" />
-            <Heading padding="medium">{image.created_at}</Heading>
+            <Text fontSize="0.75em">{image.created_at}</Text>
             <Button variation="primary" isFullWidth
             children="Save Image"
             onClick={() => {

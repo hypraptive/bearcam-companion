@@ -1,7 +1,7 @@
 import './FrameView.css';
 import { Button, Collection, Card, Image, View, Divider, Text } from "@aws-amplify/ui-react";
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Amplify, API } from 'aws-amplify';
 import awsconfig from './aws-exports';
 
@@ -18,7 +18,7 @@ export function GetImageList () {
           'Content-Type': 'application/json'
         },
         queryStringParameters: {
-          "limit": "10",
+          "limit": "15",
           "feed": "brown-bear-salmon-cam-brooks-falls"
         }
     };
@@ -47,15 +47,13 @@ export function GetImageList () {
     console.log("Posted image");
   }
 
+  useEffect(() => {
+    console.log("Fetching initial image list")
+    buttonOnClick();
+  }, []);
+
   return(
     <div>
-    <Button
-    children="Get Image List"
-    onClick={() => {
-      buttonOnClick();
-    }}
-    ></Button>
-
     <Collection
       items={imageList}
       type="grid"
@@ -88,6 +86,12 @@ export function GetImageList () {
         </Card>
       )}
     </Collection>
+    <Button
+      children="Refresh Image List"
+      onClick={() => {
+        buttonOnClick();
+      }}
+    ></Button>
     </div>
   )
 }

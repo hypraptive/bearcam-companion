@@ -7,7 +7,7 @@
 /* eslint-disable */
 import React from "react";
 import { SortDirection } from "@aws-amplify/datastore";
-import { Images } from "../models";
+import { Images, Objects } from "../models";
 import {
   getOverrideProps,
   useDataStoreBinding,
@@ -17,11 +17,18 @@ import { Collection } from "@aws-amplify/ui-react";
 export default function FrameCollection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
   const itemsPagination = { sort: (s) => s.date(SortDirection.DESCENDING) };
+  const objectsItems = useDataStoreBinding({
+    type: "collection",
+    model: Objects,
+  }).items;
   const itemsDataStore = useDataStoreBinding({
     type: "collection",
     model: Images,
     pagination: itemsPagination,
-  }).items;
+  }).items.map((item) => ({
+    ...item,
+    Objects: objectsItems.filter((model) => model.imagesID === item.id),
+  }));
   const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
   return (
     <Collection

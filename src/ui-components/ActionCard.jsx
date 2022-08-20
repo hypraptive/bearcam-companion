@@ -94,7 +94,6 @@ export default function ActionCard(props) {
         <Rating
           display="flex"
           gap="8px"
-          direction="row"
           width="174px"
           alignItems="center"
           shrink="0"
@@ -125,7 +124,6 @@ export default function ActionCard(props) {
         <Button
           display="flex"
           gap="0"
-          direction="row"
           justifyContent="center"
           alignItems="center"
           shrink="0"

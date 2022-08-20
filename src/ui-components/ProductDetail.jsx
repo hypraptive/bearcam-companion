@@ -20,7 +20,6 @@ export default function ProductDetail(props) {
   return (
     <Flex
       gap="24px"
-      direction="row"
       width="1160px"
       alignItems="flex-start"
       position="relative"
@@ -278,7 +277,6 @@ export default function ProductDetail(props) {
         ></Text>
         <Flex
           gap="16px"
-          direction="row"
           width="fit-content"
           alignItems="flex-start"
           shrink="0"
@@ -289,7 +287,6 @@ export default function ProductDetail(props) {
           <Rating
             display="flex"
             gap="8px"
-            direction="row"
             width="fit-content"
             alignItems="center"
             shrink="0"
@@ -332,7 +329,6 @@ export default function ProductDetail(props) {
             position="absolute"
             top="189px"
             left="0px"
-            direction="row"
             width="371px"
             justifyContent="center"
             alignItems="center"
@@ -347,7 +343,6 @@ export default function ProductDetail(props) {
             position="absolute"
             top="40px"
             left="0px"
-            direction="row"
             alignItems="flex-start"
             padding="0px 0px 0px 0px"
             {...getOverrideProps(overrides, "Frame 2829766973")}
@@ -355,7 +350,6 @@ export default function ProductDetail(props) {
             <Button
               display="flex"
               gap="0"
-              direction="row"
               width="75px"
               justifyContent="center"
               alignItems="center"
@@ -372,7 +366,6 @@ export default function ProductDetail(props) {
             <Button
               display="flex"
               gap="0"
-              direction="row"
               width="75px"
               justifyContent="center"
               alignItems="center"
@@ -388,7 +381,6 @@ export default function ProductDetail(props) {
             <Button
               display="flex"
               gap="0"
-              direction="row"
               width="74px"
               justifyContent="center"
               alignItems="center"
@@ -404,7 +396,6 @@ export default function ProductDetail(props) {
             <Button
               display="flex"
               gap="0"
-              direction="row"
               width="75px"
               justifyContent="center"
               alignItems="center"
@@ -423,7 +414,6 @@ export default function ProductDetail(props) {
             position="absolute"
             top="112px"
             left="0px"
-            direction="row"
             alignItems="flex-start"
             padding="0px 0px 0px 0px"
             {...getOverrideProps(overrides, "Frame 2829766978")}
@@ -431,7 +421,6 @@ export default function ProductDetail(props) {
             <Button
               display="flex"
               gap="24px"
-              direction="row"
               width="75px"
               justifyContent="center"
               alignItems="center"
@@ -447,7 +436,6 @@ export default function ProductDetail(props) {
             <Button
               display="flex"
               gap="24px"
-              direction="row"
               width="75px"
               justifyContent="center"
               alignItems="center"
@@ -463,7 +451,6 @@ export default function ProductDetail(props) {
             <Button
               display="flex"
               gap="24px"
-              direction="row"
               width="74px"
               justifyContent="center"
               alignItems="center"
@@ -479,7 +466,6 @@ export default function ProductDetail(props) {
             <Button
               display="flex"
               gap="24px"
-              direction="row"
               width="75px"
               justifyContent="center"
               alignItems="center"

@@ -56,7 +56,6 @@ export default function MarketingFooter(props) {
         position="absolute"
         top="40px"
         right="140px"
-        direction="row"
         alignItems="flex-start"
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "Frame 405")}

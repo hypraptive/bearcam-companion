@@ -24,7 +24,6 @@ export default function SocialPost(props) {
     >
       <Flex
         gap="40px"
-        direction="row"
         alignItems="flex-start"
         shrink="0"
         alignSelf="stretch"
@@ -78,7 +77,6 @@ export default function SocialPost(props) {
             ></Text>
             <Flex
               gap="16px"
-              direction="row"
               alignItems="flex-start"
               shrink="0"
               alignSelf="stretch"
@@ -128,7 +126,6 @@ export default function SocialPost(props) {
           </Flex>
           <Flex
             gap="16px"
-            direction="row"
             alignItems="flex-start"
             shrink="0"
             alignSelf="stretch"
@@ -172,7 +169,6 @@ export default function SocialPost(props) {
           </Flex>
           <Flex
             gap="16px"
-            direction="row"
             width="fit-content"
             alignItems="flex-start"
             shrink="0"
@@ -242,7 +238,6 @@ export default function SocialPost(props) {
       </Flex>
       <Flex
         gap="16px"
-        direction="row"
         alignItems="flex-start"
         shrink="0"
         alignSelf="stretch"

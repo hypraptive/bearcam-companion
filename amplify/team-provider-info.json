@@ -23,7 +23,7 @@
         },
         "bearcamcompanionbcNodeLayer": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
-          "s3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion4a3d47b3-build.zip"
+          "s3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersionb20bb0fb-build.zip"
         },
         "bcExploreLambda": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",

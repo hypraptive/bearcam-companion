@@ -21,7 +21,6 @@ export default function FormCheckout(props) {
   return (
     <Flex
       gap="24px"
-      direction="row"
       width="1160px"
       alignItems="flex-start"
       position="relative"
@@ -31,7 +30,6 @@ export default function FormCheckout(props) {
     >
       <Flex
         gap="0"
-        direction="row"
         width="683px"
         alignItems="flex-start"
         grow="1"
@@ -223,7 +221,6 @@ export default function FormCheckout(props) {
         <Badge
           display="flex"
           gap="10px"
-          direction="column"
           justifyContent="flex-start"
           alignItems="center"
           shrink="0"
@@ -238,6 +235,7 @@ export default function FormCheckout(props) {
           fontSize="14px"
           textAlign="left"
           lineHeight="14px"
+          direction="column"
           size="default"
           variation="success"
           children="Discount - 10% off"
@@ -245,7 +243,6 @@ export default function FormCheckout(props) {
         ></Badge>
         <Flex
           gap="128px"
-          direction="row"
           justifyContent="space-between"
           alignItems="center"
           shrink="0"
@@ -313,7 +310,6 @@ export default function FormCheckout(props) {
         ></Divider>
         <Flex
           gap="262px"
-          direction="row"
           justifyContent="space-between"
           alignItems="center"
           shrink="0"
@@ -362,7 +358,6 @@ export default function FormCheckout(props) {
         </Flex>
         <Flex
           gap="273px"
-          direction="row"
           justifyContent="space-between"
           alignItems="center"
           shrink="0"
@@ -411,7 +406,6 @@ export default function FormCheckout(props) {
         </Flex>
         <Flex
           gap="296px"
-          direction="row"
           justifyContent="space-between"
           alignItems="center"
           shrink="0"
@@ -471,7 +465,6 @@ export default function FormCheckout(props) {
         ></Divider>
         <Flex
           gap="290px"
-          direction="row"
           justifyContent="space-between"
           alignItems="center"
           shrink="0"
@@ -530,7 +523,6 @@ export default function FormCheckout(props) {
         <Button
           display="flex"
           gap="0"
-          direction="row"
           justifyContent="center"
           alignItems="center"
           shrink="0"

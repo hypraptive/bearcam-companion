@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import React from "react";
-import { Images } from "../models";
+import { Images, Objects } from "../models";
 import {
   getOverrideProps,
   useDataStoreBinding,
@@ -15,10 +15,17 @@ import StandardCard from "./StandardCard";
 import { Collection } from "@aws-amplify/ui-react";
 export default function StandardCardCollection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
+  const objectsItems = useDataStoreBinding({
+    type: "collection",
+    model: Objects,
+  }).items;
   const itemsDataStore = useDataStoreBinding({
     type: "collection",
     model: Images,
-  }).items;
+  }).items.map((item) => ({
+    ...item,
+    Objects: objectsItems.filter((model) => model.imagesID === item.id),
+  }));
   const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
   return (
     <Collection

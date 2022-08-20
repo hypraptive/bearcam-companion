@@ -23,7 +23,6 @@ export default function FAQItem(props) {
     >
       <Flex
         gap="0"
-        direction="row"
         alignItems="center"
         shrink="0"
         alignSelf="stretch"

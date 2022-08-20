@@ -6,13 +6,14 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { StandardCardProps } from "./StandardCard";
 import { CollectionProps } from "@aws-amplify/ui-react";
 export declare type StandardCardCollectionProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
     items?: any[];
-    overrideItems?: ({ item: any, index: number }: {
+    overrideItems?: (collectionItem: {
         item: any;
-        index: any;
-    }) => Record<string, string>;
+        index: number;
+    }) => StandardCardProps;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;

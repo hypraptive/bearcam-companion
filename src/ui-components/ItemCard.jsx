@@ -24,7 +24,6 @@ export default function ItemCard(props) {
       <Badge
         display="flex"
         gap="0"
-        direction="column"
         width="fit-content"
         justifyContent="flex-start"
         alignItems="center"
@@ -38,6 +37,7 @@ export default function ItemCard(props) {
         fontWeight="400"
         color="rgba(13,26,38,1)"
         textAlign="left"
+        direction="column"
         size="small"
         variation="default"
         children="New"
@@ -45,7 +45,6 @@ export default function ItemCard(props) {
       ></Badge>
       <Flex
         gap="0"
-        direction="row"
         justifyContent="space-between"
         alignItems="center"
         shrink="0"

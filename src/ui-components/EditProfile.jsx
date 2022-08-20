@@ -33,7 +33,6 @@ export default function EditProfile(props) {
       >
         <Flex
           gap="16px"
-          direction="row"
           alignItems="center"
           shrink="0"
           alignSelf="stretch"
@@ -150,7 +149,6 @@ export default function EditProfile(props) {
         <Button
           display="flex"
           gap="0"
-          direction="row"
           width="fit-content"
           justifyContent="center"
           alignItems="center"

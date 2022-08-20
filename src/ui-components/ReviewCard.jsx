@@ -22,7 +22,6 @@ export default function ReviewCard(props) {
   return (
     <Flex
       gap="0"
-      direction="row"
       width="960px"
       alignItems="center"
       position="relative"
@@ -41,7 +40,7 @@ export default function ReviewCard(props) {
       <Flex
         gap="24px"
         direction="column"
-        height="351px"
+        width="560px"
         grow="1"
         basis="560px"
         alignSelf="stretch"
@@ -62,7 +61,6 @@ export default function ReviewCard(props) {
         >
           <Flex
             gap="8px"
-            direction="row"
             alignItems="flex-start"
             shrink="0"
             alignSelf="stretch"
@@ -214,7 +212,6 @@ export default function ReviewCard(props) {
         <Badge
           display="flex"
           gap="10px"
-          direction="column"
           width="fit-content"
           justifyContent="flex-start"
           alignItems="center"
@@ -228,6 +225,7 @@ export default function ReviewCard(props) {
           fontWeight="400"
           color="rgba(13,26,38,1)"
           textAlign="left"
+          direction="column"
           size="small"
           variation="default"
           children="New!"
@@ -235,7 +233,6 @@ export default function ReviewCard(props) {
         ></Badge>
         <Flex
           gap="16px"
-          direction="row"
           alignItems="center"
           shrink="0"
           alignSelf="stretch"
@@ -246,7 +243,6 @@ export default function ReviewCard(props) {
         >
           <Flex
             gap="16px"
-            direction="row"
             width="fit-content"
             alignItems="center"
             shrink="0"
@@ -258,7 +254,6 @@ export default function ReviewCard(props) {
             <Rating
               display="flex"
               gap="8px"
-              direction="row"
               width="fit-content"
               alignItems="center"
               shrink="0"

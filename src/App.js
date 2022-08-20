@@ -1,6 +1,6 @@
 import './App.css';
 //import FrameView from './FrameView';
-import { withAuthenticator, Heading } from '@aws-amplify/ui-react';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Hub } from "@aws-amplify/core";
 import { useState, useEffect } from 'react'
 import { DataStore, Predicates, SortDirection } from "aws-amplify";
@@ -8,12 +8,12 @@ import { Images } from "./models";
 import '@aws-amplify/ui-react/styles.css';
 
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route,
 } from 'react-router-dom';
 
-import { NavBar } from './ui-components'
+import Layout from './Layout';
 import FrameList from './FrameList';
 import FrameView from './FrameView';
 import ImageView from './ImageView';
@@ -47,41 +47,22 @@ function App({ signOut, user }) {
     };
   }, []);
 
-  function isAdmin() {
-    const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
-    if (groups && groups.includes('admin')) {
-      return true;
-    }
-    return false;
-  }
-
   return (
     <div className="App">
-    <Router>
-    <NavBar width={"100vw"} overrides={{
-      "username": { children: "Hello, "+user.username },
-      "Button": {color: "white", onClick: signOut},
-      "Logo": {style: {cursor:'pointer'}},
-      "Home": {style: {cursor:'pointer'}},
-      "Identify": {children: "View", display:'none'},
-      "Edit": {children: "Admin", style: {cursor:'pointer'}, display: isAdmin()?'block':'none'}
-    }} />
-      <Heading level={4}>Bearcam Companion</Heading>
-
+    <BrowserRouter>
       <Routes>
-        <Route path="/view" element={<FrameView user={user} />} />
-        <Route path="/" element={<FrameList images={imageList} />} />
-        <Route path="/image/:imageId" element={<ImageView images={imageList} user={user} />} />
-        <Route path="/edit/:imageId" element={<EditView images={imageList} user={user} />} />
-        <Route path="/admin" element={<AdminView user={user} />} />
-        <Route path="*" element={<FrameList images={imageList} />} />
+        <Route path="/" element={<Layout signOut={signOut} user={user} />} >
+          <Route index element={<FrameList images={imageList} />} />
+          <Route path="list" element={<FrameList images={imageList} />} />
+          <Route path="view" element={<FrameView user={user} />} />
+          <Route path="image/:imageId" element={<ImageView images={imageList} user={user} />} />
+          <Route path="edit/:imageId" element={<EditView images={imageList} user={user} />} />
+          <Route path="admin" element={<AdminView user={user} />} />
+        </Route>
       </Routes>
-    </Router>
-      <footer className="App-footer">
-        <h2>&copy;2022 BearID Project</h2>
-      </footer>
+    </BrowserRouter>
     </div>
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, { includeGreetings: true });

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from "react-router-dom";
+import { Card, Flex } from "@aws-amplify/ui-react";
 import { Annotorious } from '@recogito/annotorious';
 import { Link } from 'react-router-dom';
 import { DataStore } from "aws-amplify";
@@ -184,13 +185,33 @@ function EditView({images, user}) {
 
   return (
     <div>
+    <Link to={`/image/${curImage.id}`}>
+      Back to View Image
+    </Link>
+    <Flex
+      direction="row"
+      justifyContent="flex-start"
+      alignItems="stretch"
+      alignContent="flex-start"
+      wrap="nowrap"
+      gap="1rem"
+    >
+      <Card
+        key="prev-icon"
+        borderRadius="medium"
+        variation="outlined"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
       <img
         ref={imgEl}
         src={curImage.url}
         alt={curImage.id} />
-      <Link to={`/image/${curImage.id}`}>
-        Back to View Image
-      </Link>
+    </Card>
+    </Flex>
     </div>
   );
 }

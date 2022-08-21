@@ -24,6 +24,12 @@ function App({ signOut, user }) {
   const [imageList, setImageList] = useState([]);
 
   useEffect(() => {
+    async function getImages() {
+      const images = await DataStore.query(Images, Predicates.ALL, {sort: s => s.date(SortDirection.DESCENDING)});
+      //console.log("Images", images)
+      setImageList(images);
+    }
+
     // Create listener that will stop observing the model once the sync process is done
     const removeListener = Hub.listen("datastore", async (capsule) => {
       const {
@@ -33,11 +39,10 @@ function App({ signOut, user }) {
       console.log("DataStore event", event, data);
 
       if (event === "ready") {
-        const images = await DataStore.query(Images, Predicates.ALL, {sort: s => s.date(SortDirection.DESCENDING)});
-        //console.log("Images", images)
-        setImageList(images);
+        getImages();
+        DataStore.observe(Images).subscribe(getImages);
       }
-    });
+    }, []);
 
     // Start the DataStore, this kicks-off the sync process.
     DataStore.start();
@@ -45,13 +50,13 @@ function App({ signOut, user }) {
     return () => {
       removeListener();
     };
-  }, []);
+  });
 
   return (
     <div className="App">
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout signOut={signOut} user={user} />} >
+        <Route path="/*" element={<Layout signOut={signOut} user={user} images={imageList} />} >
           <Route index element={<FrameList images={imageList} />} />
           <Route path="list" element={<FrameList images={imageList} />} />
           <Route path="view" element={<FrameView user={user} />} />

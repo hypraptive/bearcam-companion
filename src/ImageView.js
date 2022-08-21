@@ -9,17 +9,24 @@ import Boxes from './Boxes';
 
 export function ImageView({images, user}) {
   let params = useParams();
-  //console.log("Images", images)
-  const curIndex = images.findIndex(obj => obj.id === params.imageId)
-  const curImage = images[curIndex]
-  const prvIndex = (curIndex === 0) ? (images.length-1) : (curIndex - 1);
-  const nxtIndex = (curIndex === (images.length-1)) ? 0 : curIndex + 1;
-  console.log("Indexes", prvIndex, curIndex, nxtIndex);
-  console.log("Image", curImage.id)
-  //console.log("user", user)
-  const curUser = user;
-  //console.log("user", curUser)
+  console.log("Param ID:", params.imageId);
+
   const [boxList, setBoxList] = useState([]);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [curImage, setCurImage] = useState();
+  const [prvIndex, setPrvIndex] = useState();
+  const [nxtIndex, setNxtIndex] = useState();
+
+  useEffect(() => {
+    if (images.length > 0) {
+      console.log("Images Loaded");
+      const idx = images.findIndex(obj => obj.id === params.imageId);
+      setCurImage(images[idx]);
+      setPrvIndex((idx === 0) ? (images.length-1) : (idx - 1));
+      setNxtIndex((idx === (images.length-1)) ? 0 : idx + 1);
+      setImagesLoaded(true);
+    }
+  }, [images, params.imageId])
 
   useEffect(() => {
     async function getBoxes() {
@@ -29,90 +36,98 @@ export function ImageView({images, user}) {
         setBoxList(boxes.filter(box => box.label === "Bear"));
       }
     }
-    console.log("Get boxes for", curImage.id)
-    getBoxes();
-    //DataStore.observe(Objects).subscribe(getBoxes);
-    DataStore.observe(Objects).subscribe(getBoxes);
-  }, [curImage]);
+    if (imagesLoaded) {
+      console.log("Get boxes for", curImage.id)
+      getBoxes();
+      //DataStore.observe(Objects).subscribe(getBoxes);
+      DataStore.observe(Objects).subscribe(getBoxes);
+    }
+  }, [imagesLoaded, curImage]);
 
-  return (
-    <div>
-    <Link to={`/`}>Back to List</Link>
-    <Flex
-      direction="row"
-      justifyContent="flex-start"
-      alignItems="stretch"
-      alignContent="flex-start"
-      wrap="nowrap"
-      gap="1rem"
-    >
-      <Card
-        key="prev-icon"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
+  if (imagesLoaded) {
+    return (
+      <div>
+      <Link to={`/`}>Back to List</Link>
+      <Flex
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="stretch"
+        alignContent="flex-start"
+        wrap="nowrap"
+        gap="1rem"
       >
-        <Link to={`/image/${images[prvIndex].id}`}>
-          <AiFillCaretLeft
-            color='black'
-            preserveAspectRatio="none"
-            style={{
-              width: '50px',
-              height: '100px'
-            }}
-         />
-        </Link>
-      </Card>
-      <Card
-        key={params.imageId}
-        borderRadius="medium"
-        variation="outlined"
-      >
-        <View >
-        <div style={{position:'relative', margin:'auto', display: 'block'}}>
-          <Image
-            src={curImage.url}
-            alt={curImage.id}
-          />
-          {
-            boxList.map( (box) =>
-            <Boxes  key={box.id} box={box} username={curUser.username} />
-            )
-          }
-        </div>
-        <View padding="xs">
-          <Divider padding="xs" />
-          <Text fontSize="0.75em">{curImage.date}</Text>
-        </View>
-        </View>
-      </Card>
-      <Card
-        key="next-icon"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
-        <Link to={`/image/${images[nxtIndex].id}`}>
-          <AiFillCaretRight
-            color='black'
-            preserveAspectRatio="none"
-            style={{
-              width: '50px',
-              height: '100px'
-            }}
-         />
-        </Link>
-      </Card>
-    </Flex>
-    <Link to={`/edit/${curImage.id}`}>
-     Edit
-    </Link>
-    </div>
-  )
+        <Card
+          key="prev-icon"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <Link to={`/image/${images[prvIndex].id}`}>
+            <AiFillCaretLeft
+              color='black'
+              preserveAspectRatio="none"
+              style={{
+                width: '50px',
+                height: '100px'
+              }}
+           />
+          </Link>
+        </Card>
+        <Card
+          key={params.imageId}
+          borderRadius="medium"
+          variation="outlined"
+        >
+          <View >
+          <div style={{position:'relative', margin:'auto', display: 'block'}}>
+            <Image
+              src={curImage.url}
+              alt={curImage.id}
+            />
+            {
+              boxList.map( (box) =>
+              <Boxes  key={box.id} box={box} username={user.username} />
+              )
+            }
+          </div>
+          <View padding="xs">
+            <Divider padding="xs" />
+            <Text fontSize="0.75em">{curImage.date}</Text>
+          </View>
+          </View>
+        </Card>
+        <Card
+          key="next-icon"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <Link to={`/image/${images[nxtIndex].id}`}>
+            <AiFillCaretRight
+              color='black'
+              preserveAspectRatio="none"
+              style={{
+                width: '50px',
+                height: '100px'
+              }}
+           />
+          </Link>
+        </Card>
+      </Flex>
+      <Link to={`/edit/${curImage.id}`}>
+       Edit
+      </Link>
+      </div>
+    )
+  } else {
+    return (
+      <div>loading...</div>
+    )
+  }
 }
 
 

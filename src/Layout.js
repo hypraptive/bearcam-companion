@@ -10,14 +10,14 @@ import { useNavigate } from "react-router-dom";
 
 import { NavBar } from './ui-components'
 
-function Layout({ signOut, user }) {
+function Layout({ signOut, user, images }) {
   let navigate = useNavigate();
 
   const logoutUser = () => {
     navigate("/");
     signOut();
   };
-  
+
   function isAdmin() {
     const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
     if (groups && groups.includes('admin')) {

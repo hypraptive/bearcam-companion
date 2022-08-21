@@ -44,6 +44,14 @@ export function ImageView({images, user}) {
     }
   }, [imagesLoaded, curImage]);
 
+  function isAdmin() {
+    const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
+    if (groups && groups.includes('admin')) {
+      return true;
+    }
+    return false;
+  }
+
   if (imagesLoaded) {
     return (
       <div>
@@ -118,9 +126,13 @@ export function ImageView({images, user}) {
           </Link>
         </Card>
       </Flex>
-      <Link to={`/edit/${curImage.id}`}>
-       Edit
-      </Link>
+      {isAdmin()
+        ?
+        <Link to={`/edit/${curImage.id}`}>
+         Edit
+        </Link>
+        : <div/>
+      }
       </div>
     )
   } else {

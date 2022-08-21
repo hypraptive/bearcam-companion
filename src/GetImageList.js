@@ -54,6 +54,12 @@ export function GetImageList () {
 
   return(
     <div>
+    <Button
+      children="Refresh Image List"
+      onClick={() => {
+        buttonOnClick();
+      }}
+    ></Button>
     <Collection
       items={imageList}
       type="grid"
@@ -86,12 +92,6 @@ export function GetImageList () {
         </Card>
       )}
     </Collection>
-    <Button
-      children="Refresh Image List"
-      onClick={() => {
-        buttonOnClick();
-      }}
-    ></Button>
     </div>
   )
 }

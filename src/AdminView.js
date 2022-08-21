@@ -17,8 +17,8 @@ export function AdminView ({ user }) {
         {isAdmin()
           ?
             <div>
-              <GetLatestImage/>
               <GetImageList/>
+              <GetLatestImage/>
             </div>
           : <div>No Access</div>
         }

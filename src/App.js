@@ -40,17 +40,18 @@ function App({ signOut, user }) {
 
       if (event === "ready") {
         getImages();
-        DataStore.observe(Images).subscribe(getImages);
+        //DataStore.observe(Images).subscribe(getImages);
       }
-    }, []);
+    });
 
     // Start the DataStore, this kicks-off the sync process.
+    console.log("Start datastore")
     DataStore.start();
 
     return () => {
       removeListener();
     };
-  });
+  }, []);
 
   return (
     <div className="App">

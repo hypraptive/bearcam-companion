@@ -8,7 +8,7 @@ import { Identifications } from "./models";
 
 export default function Boxes({ box, username }) {
   const [identList, setIdentList] = useState([]);
-  const [identAgg, setIdentAgg] = useState([["Unknown", 1]]);
+  const [identAgg, setIdentAgg] = useState([["???", 1]]);
   const [identCount, setIdentCount] = useState(1);
 
   const boxTop = `${box.top*100}%`
@@ -31,7 +31,7 @@ export default function Boxes({ box, username }) {
       //console.log("Identifications retrieved successfully!", JSON.stringify(idents, null, 2));
       //console.log("Identifications retrieved successfully!", idents.length);
       //console.log("Idents:", JSON.stringify(idents, null, 2));
-      var pairIdents = [["Unknown", 1]];
+      var pairIdents = [["???", 1]];
 
       var count = 1;
       if (idents.length) {
@@ -56,7 +56,7 @@ export default function Boxes({ box, username }) {
             <div className="bbox-bear tooltip" key={box.id}
               style={{top: boxTop, left: boxLeft, height: boxHeight, width: boxWidth }} >
               <div>
-                <div className="identname">{identAgg[0][0]} ({identAgg[0][1]}/{identCount} = {Math.trunc(identAgg[0][1]*100/identCount)}%)</div>
+                <div className="identname">{identAgg[0][0]} ({identAgg[0][1]}/{identCount})</div>
               </div>
               <div className="identdetails">
                 {

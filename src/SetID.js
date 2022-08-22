@@ -29,6 +29,8 @@ export default function SetID ({ boxID, curList, username }) {
     '032 Chunk',
     '039',
     '040',
+    '057',
+    '063',
     '068',
     '083 Wayne Brother',
     '087',
@@ -59,7 +61,7 @@ export default function SetID ({ boxID, curList, username }) {
     '153',
     '155',
     '161',
-    '164',
+    '164 (Bucky)',
     '166',
     '167',
     '171',
@@ -116,7 +118,8 @@ export default function SetID ({ boxID, curList, username }) {
     '805',
     '806',
     '807',
-    '809',
+    '808',
+    '809 (Velcro)',
     '810',
     '811',
     '812',
@@ -136,7 +139,9 @@ export default function SetID ({ boxID, curList, username }) {
     '907',
     '908',
     '909',
-    '910'
+    '910',
+    '912',
+    '913'
   ]
 
   const [curSel, setCurSel] = useState("none");

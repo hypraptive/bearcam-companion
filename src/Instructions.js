@@ -69,9 +69,10 @@ export function Instructions ({ user }) {
           "Unknown Adult" or "Unknown Subadult".</li>
           <li>If the bear is a cub, select the appropriate age of "COY" (for spring cubs),
           "1.5 year old" or "2.5 year old".</li>
-          <li>The rest of the bear identifications are in numerical order. The two digit
-          numbers have a leading zero (as in "032 Chunk"). When the dropdown is visible,
-          you can start typing the number to get there more quickly.</li>
+          <li>The rest of the bear identifications are in numerical order. Two-digit
+          numbers have a leading zero (as in "032 Chunk").</li>
+          <li>When the dropdown is visible, you can start typing the number to get there
+          faster. Start with zero for two-digit numbers.</li>
           <li>Bears without assinged numbers are not yet listed.</li>
         </ul>
       </ul>
@@ -108,7 +109,7 @@ export function Instructions ({ user }) {
     <ul>
       <li>If you log out and log back in, the image list may be empty. Please refresh.</li>
       <li>There may be other issues where you need to refresh the page once in a while to get the latest images.</li>
-      <li>There is not way to delete an id</li>
+      <li>There is no way to delete an id</li>
     </ul>
     You can send email to bcc@hypraptive.com with questions, problems and suggestions.
     </Text>

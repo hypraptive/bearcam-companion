@@ -33,6 +33,8 @@ function Layout({ signOut, user, images }) {
       "Button": {color: "white", onClick: logoutUser},
       "Logo": {style: {cursor:'pointer'}},
       "Home": {style: {cursor:'pointer'}},
+      "Instructions": {style: {cursor:'pointer'}},
+      "About": {style: {cursor:'pointer'}},
       "Identify": {children: "View", display:'none'},
       "Edit": {children: "Admin", style: {cursor:'pointer'}, display: isAdmin()?'block':'none'}
     }} />

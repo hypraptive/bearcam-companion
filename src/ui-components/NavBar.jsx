@@ -20,6 +20,11 @@ export default function NavBar(props) {
   const homeOnClick = useNavigateAction({ type: "url", url: "/" });
   const identifyOnClick = useNavigateAction({ type: "url", url: "/view" });
   const editOnClick = useNavigateAction({ type: "url", url: "/admin" });
+  const instructionsOnClick = useNavigateAction({
+    type: "url",
+    url: "/instructions",
+  });
+  const aboutOnClick = useNavigateAction({ type: "url", url: "/about" });
   return (
     <Flex
       gap="20px"
@@ -146,6 +151,9 @@ export default function NavBar(props) {
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="Instructions"
+          onClick={() => {
+            instructionsOnClick();
+          }}
           {...getOverrideProps(overrides, "Instructions")}
         ></Text>
         <Text
@@ -164,6 +172,9 @@ export default function NavBar(props) {
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="About"
+          onClick={() => {
+            aboutOnClick();
+          }}
           {...getOverrideProps(overrides, "About")}
         ></Text>
       </Flex>

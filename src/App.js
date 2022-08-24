@@ -19,6 +19,8 @@ import FrameView from './FrameView';
 import ImageView from './ImageView';
 import AdminView from './AdminView';
 import EditView from './EditView';
+import Instructions from './Instructions';
+import About from './About';
 
 function App({ signOut, user }) {
   const [imageList, setImageList] = useState([]);
@@ -64,6 +66,8 @@ function App({ signOut, user }) {
           <Route path="image/:imageId" element={<ImageView images={imageList} user={user} />} />
           <Route path="edit/:imageId" element={<EditView images={imageList} user={user} />} />
           <Route path="admin" element={<AdminView user={user} />} />
+          <Route path="instructions" element={<Instructions />} />
+          <Route path="about" element={<About />} />
         </Route>
       </Routes>
     </BrowserRouter>

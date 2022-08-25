@@ -9,6 +9,8 @@ export default function SetID ({ boxID, curList, username }) {
     'Unknown',
     'Unknown Adult',
     'Unknown Subadult',
+    'Known Adult',
+    'Known Subadult',
     'Cub (COY)',
     'Cub (1.5yo)',
     'Cub (2.5yo)',

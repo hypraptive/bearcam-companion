@@ -67,6 +67,8 @@ export function Instructions ({ user }) {
           <li>Select "Not a bear" if the box is highlighting something other than a bear.</li>
           <li>If you are sure the bear is not one of the known bears, select "Unknown",
           "Unknown Adult" or "Unknown Subadult".</li>
+          <li>If the bear is known but not yet numbered, select
+          "Known Adult" or "Known Subadult".</li>
           <li>If the bear is a cub, select the appropriate age of "COY" (for spring cubs),
           "1.5 year old" or "2.5 year old".</li>
           <li>The rest of the bear identifications are in numerical order. Two-digit

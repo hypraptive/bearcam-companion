@@ -18,7 +18,7 @@ export function GetImageList () {
           'Content-Type': 'application/json'
         },
         queryStringParameters: {
-          "limit": "15",
+          "limit": "60",
           "feed": "brown-bear-salmon-cam-brooks-falls"
         }
     };

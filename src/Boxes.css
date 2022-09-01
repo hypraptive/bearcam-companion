@@ -53,13 +53,12 @@
 .identname {
   display: block;
   position: absolute;
-  top: 1px;
-  min-width: 120px;
   background-color: rgba(255, 255, 255, 0.50);
   color: blue;
+  font-size:16px;
   text-align: left !important;
-  padding: 3px 0;
-  border-radius: 6px;
+  border-radius: 4px;
+  white-space:nowrap;
 
   /* Position the tooltip text - see examples below! */
   position: absolute;
@@ -69,11 +68,13 @@
   display: block;
   position: absolute;
   visibility: hidden;
-  top: -110px;
+  bottom: 100%;
   min-width: 120px;
-  background-color: rgba(255, 255, 255, 0.50);
+  background-color: rgba(255, 255, 255, 0.75);
   color: blue;
+  font-size:16px;
   text-align: left !important;
+  white-space:nowrap;
   padding: 3px 0;
   border-radius: 6px;
   z-index: 1;

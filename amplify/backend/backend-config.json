@@ -148,5 +148,11 @@
         }
       ]
     }
+  },
+  "analytics": {
+    "bearcamcompanion": {
+      "service": "Pinpoint",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }

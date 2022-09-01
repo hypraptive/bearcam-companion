@@ -50,5 +50,12 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string"
         }
+    },
+    "analytics": {
+        "bearcamcompanion": {
+            "Region": "string",
+            "Id": "string",
+            "appName": "string"
+        }
     }
 }

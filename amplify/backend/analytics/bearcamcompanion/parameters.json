@@ -1,0 +1,21 @@
+{
+    "appName": "bearcamcompanion",
+    "roleName": "pinpointLambdaRole227edf72",
+    "cloudformationPolicyName": "cloudformationPolicy227edf72",
+    "cloudWatchPolicyName": "cloudWatchPolicy227edf72",
+    "pinpointPolicyName": "pinpointPolicy227edf72",
+    "authPolicyName": "pinpoint_amplify_227edf72",
+    "unauthPolicyName": "pinpoint_amplify_227edf72",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

@@ -20,23 +20,19 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersion02de3a4c": {
+    "LambdaLayerVersion9ffaf805": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
-        "CompatibleRuntimes": {
-          "Ref": "runtimes"
-        },
+        "CompatibleRuntimes": [
+          "nodejs14.x"
+        ],
         "Content": {
           "S3Bucket": {
             "Ref": "deploymentBucketName"
           },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
+          "S3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion9ffaf805-build.zip"
         },
-        "Description": {
-          "Ref": "description"
-        },
+        "Description": "Updated layer version 2022-08-24T17:43:59.239Z",
         "LayerName": {
           "Fn::Sub": [
             "bearcamcompanionbcNodeLayer-${env}",
@@ -51,13 +47,11 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPrivate02de3a4c": {
+    "LambdaLayerPermissionPrivate9ffaf805": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": {
-          "Ref": "LambdaLayerVersion02de3a4c"
-        },
+        "LayerVersionArn": "arn:aws:lambda:us-east-1:664488008388:layer:bearcamcompanionbcNodeLayer-staging:20",
         "Principal": {
           "Ref": "AWS::AccountId"
         }
@@ -67,7 +61,7 @@
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersion02de3a4c"
+        "Ref": "LambdaLayerVersion9ffaf805"
       }
     }
   }

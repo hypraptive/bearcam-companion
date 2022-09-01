@@ -7,8 +7,10 @@ import { DataStore } from "aws-amplify";
 import { Objects } from "./models";
 
 import '@recogito/annotorious/dist/annotorious.min.css';
+// EditView.css adapted from Annotorious Shape Labels
+// https://github.com/recogito/recogito-client-plugins/tree/main/plugins/annotorious-shape-labels
+import './EditView.css';
 
-// Search for TODO:
 // Optional: Add comment field to Objects to save
 // Optional: .setAuthInfo (https://recogito.github.io/annotorious/api-docs/annotorious/#setauthinfo)
 
@@ -23,6 +25,37 @@ function EditView({images, user}) {
 
   // The current Annotorious instance
   const [ anno, setAnno ] = useState();
+
+  // ShapeLabelsFormatter adapted from Annotorious Shape Labels
+  // https://github.com/recogito/recogito-client-plugins/tree/main/plugins/annotorious-shape-labels
+  var ShapeLabelsFormatter = function(annotation) {
+    const bodies = Array.isArray(annotation.body) ?
+      annotation.body : [ annotation.body ];
+
+    const firstTag = bodies.find(b => b.purpose === 'tagging');
+
+    if (firstTag) {
+      const foreignObject = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');
+
+      // Overflow is set to visible, but the foreignObject needs >0 zero size,
+      // otherwise FF doesn't render...
+      foreignObject.setAttribute('width', '1px');
+      foreignObject.setAttribute('height', '1px');
+
+      foreignObject.innerHTML = `
+        <div xmlns="http://www.w3.org/1999/xhtml" class="a9s-shape-label-wrapper">
+          <div class="a9s-shape-label">
+            ${firstTag.value}
+          </div>
+        </div>`;
+
+      return {
+        element: foreignObject,
+        className: firstTag.value
+      };
+    }
+  }
+
 
   // Annotorious annotation xamples at
   // https://recogito.github.io/annotorious/getting-started/web-annotation/
@@ -83,7 +116,8 @@ function EditView({images, user}) {
         fragmentUnit: 'percent',
         widgets: [
           { widget: 'TAG', vocabulary: [ 'Bear', 'Bird', 'Fish', 'Moose', 'Person', 'Wolf'] }
-        ]
+        ],
+        formatter: ShapeLabelsFormatter
       });
 
       // Attach event handlers here
@@ -114,7 +148,6 @@ function EditView({images, user}) {
       });
 
       annotorious.on('updateAnnotation', async (annotation, previous) => {
-        // TODO:updateAnnotation
         const label = getLabel(annotation);
         console.log("Label:", label);
 

@@ -127,7 +127,7 @@ export default function SetID ({ boxID, curList, username }) {
     '812',
     '813 Nostril Bear',
     '820',
-    '821',
+    '821 (Pepper)',
     '831',
     '854 Divot',
     '856',

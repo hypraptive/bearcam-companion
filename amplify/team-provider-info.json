@@ -27,7 +27,7 @@
         },
         "bcExploreLambda": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
-          "s3Key": "amplify-builds/bcExploreLambda-56664739463753634453-build.zip"
+          "s3Key": "amplify-builds/bcExploreLambda-51536736544b67344562-build.zip"
         }
       }
     }

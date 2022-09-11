@@ -230,22 +230,32 @@ app.get('/explore/list', async (request, response) => {
      throw err;
    }
 
-   // Download image
-   const imageData = await downloadImage(fileUrl);
-   console.log('Successfully downloaded file of size', imageData.length);
+   var date = new Date();
+   //data from database
+   console.log("current date: " + date)
 
-   // Upload image to S3
-   const fileName = path.basename(fileUrl);
-   await uploadImageS3Public (fileName, imageData);
-   console.log("Uploaded file to S3:", fileName);
+   const TEN_MIN = 10 * 60 * 1000;
 
-   // Add image to Images table
-   await createImageEntry (fileUrl, createdDate);
-   console.log('Created Image Entry for', fileName);
+   if ((date - new Date(createdDate)) < TEN_MIN) {
+     console.log('Image is less than 10 mins old');
 
-   response.json({success: 'post call succeed!', url: request.url, body: request.body})
-   //response.json(respData);
- });
+     // Download image
+     const imageData = await downloadImage(fileUrl);
+     console.log('Successfully downloaded file of size', imageData.length);
+
+     // Upload image to S3
+     const fileName = path.basename(fileUrl);
+     await uploadImageS3Public(fileName, imageData);
+     console.log("Uploaded file to S3:", fileName);
+
+     // Add image to Images table
+     await createImageEntry(fileUrl, createdDate);
+     console.log('Created Image Entry for', fileName);
+    } else {
+      console.log('No new images');
+  }
+  response.json({success: 'post call succeed!', url: request.url, body: request.body})
+});
 
  /**********************
   * POST /explore/upload

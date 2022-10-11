@@ -1,6 +1,4 @@
-import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplify/datastore";
-
-
+import { ModelInit, MutableModel } from "@aws-amplify/datastore";
 
 export declare class S3Object {
   readonly bucket?: string | null;

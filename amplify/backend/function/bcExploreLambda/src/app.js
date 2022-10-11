@@ -118,7 +118,7 @@ async function uploadImageS3Public (fileName, imageData) {
 async function createImageEntry (fileUrl, createdDate) {
   const fileName = path.basename(fileUrl);
   try {
-    await axios.post(GRAPHQL_ENDPOINT,
+    const resp = await axios.post(GRAPHQL_ENDPOINT,
       {
         query: `
           mutation CREATE_IMAGES($input: CreateImagesInput!) {
@@ -215,9 +215,6 @@ app.get('/explore/list', async (request, response) => {
      feed = request.body.feed;
    }
    const exUrl = exploreURL + 'query?feed=' + feed + exploreOption + '&page_size=' + limit;
-   var fileUrl = "";
-   var createdDate = "";
-
    console.log("URL:", exUrl)
    try {
      const axRes = await axios(exUrl);
@@ -269,6 +266,7 @@ app.get('/explore/list', async (request, response) => {
   app.post('/explore/upload', async (request, response) => {
     console.log("Request URL:", request.url)
     console.log("Request Body:", request.body)
+    var respData = {};
 
     var fileUrl = '';
     var createdDate = '';

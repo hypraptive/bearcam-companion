@@ -1,5 +1,4 @@
 import './App.css';
-//import FrameView from './FrameView';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Hub } from "@aws-amplify/core";
 import { useState, useEffect } from 'react'

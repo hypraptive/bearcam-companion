@@ -5,7 +5,7 @@
  **************************************************************************/
 
 /* eslint-disable */
-import React from "react";
+import * as React from "react";
 import { SortDirection } from "@aws-amplify/datastore";
 import { Images, Objects } from "../models";
 import {

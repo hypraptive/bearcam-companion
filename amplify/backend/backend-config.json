@@ -9,8 +9,9 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
+              "apiKeyExpirationDays": 90,
+              "apiKeyExpirationDate": "2023-01-21T04:24:00.969Z",
+              "description": "extend key"
             }
           },
           "additionalAuthenticationProviders": [
@@ -89,13 +90,6 @@
       "service": "Lambda",
       "dependsOn": [
         {
-          "category": "function",
-          "resourceName": "bearcamcompanionbcNodeLayer",
-          "attributes": [
-            "Arn"
-          ]
-        },
-        {
           "category": "api",
           "resourceName": "BearcamCompanion",
           "attributes": [
@@ -109,6 +103,13 @@
           "resourceName": "s3bearcamcompanionstoragecb0d4917",
           "attributes": [
             "BucketName"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "bearcamcompanionbcNodeLayer",
+          "attributes": [
+            "Arn"
           ]
         }
       ]
@@ -124,13 +125,6 @@
       "service": "Lambda",
       "dependsOn": [
         {
-          "category": "function",
-          "resourceName": "bearcamcompanionbcNodeLayer",
-          "attributes": [
-            "Arn"
-          ]
-        },
-        {
           "category": "api",
           "resourceName": "BearcamCompanion",
           "attributes": [
@@ -144,6 +138,13 @@
           "resourceName": "s3bearcamcompanionstoragecb0d4917",
           "attributes": [
             "BucketName"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "bearcamcompanionbcNodeLayer",
+          "attributes": [
+            "Arn"
           ]
         }
       ]

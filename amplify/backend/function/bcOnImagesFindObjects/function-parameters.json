@@ -2,7 +2,8 @@
   "permissions": {
     "api": {
       "BearcamCompanion": [
-        "Query"
+        "Query",
+        "Mutation"
       ]
     },
     "storage": {
@@ -10,7 +11,9 @@
         "read"
       ],
       "Objects:@model(appsync)": [
-        "create"
+        "create",
+        "read",
+        "update"
       ],
       "Images:@model(appsync)": [
         "read"
@@ -21,9 +24,9 @@
     {
       "type": "ProjectLayer",
       "resourceName": "bearcamcompanionbcNodeLayer",
-      "env": "staging",
       "version": "Always choose latest version",
-      "isLatestVersionSelected": true
+      "isLatestVersionSelected": true,
+      "env": "staging"
     }
   ]
 }

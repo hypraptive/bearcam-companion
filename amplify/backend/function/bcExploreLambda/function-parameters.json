@@ -2,6 +2,7 @@
   "permissions": {
     "api": {
       "BearcamCompanion": [
+        "Query",
         "Mutation"
       ]
     },
@@ -22,9 +23,9 @@
     {
       "type": "ProjectLayer",
       "resourceName": "bearcamcompanionbcNodeLayer",
-      "env": "staging",
       "version": "Always choose latest version",
-      "isLatestVersionSelected": true
+      "isLatestVersionSelected": true,
+      "env": "staging"
     }
   ]
 }

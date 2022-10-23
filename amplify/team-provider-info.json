@@ -32,6 +32,16 @@
       },
       "storage": {
         "s3bearcamcompanionstoragecb0d4917": {}
+      },
+      "api": {
+        "BearcamCompanion": {},
+        "bcExploreApi": {}
+      },
+      "predictions": {
+        "identifyLabelsd92e673a": {}
+      },
+      "analytics": {
+        "bearcamcompanion": {}
       }
     }
   }

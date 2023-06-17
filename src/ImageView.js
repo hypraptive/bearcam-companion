@@ -6,6 +6,7 @@ import { Card, Image, View, Divider, Text, Flex } from "@aws-amplify/ui-react";
 import { DataStore } from "aws-amplify";
 import { Objects } from "./models";
 import Boxes from './Boxes';
+import DeleteImage from './DeleteImage';
 
 export function ImageView({images, user}) {
   let params = useParams();
@@ -128,9 +129,12 @@ export function ImageView({images, user}) {
       </Flex>
       {isAdmin()
         ?
+        <div>
         <Link to={`/edit/${curImage.id}`}>
-         Edit
+          Edit
         </Link>
+        <DeleteImage imageID={curImage.id} />
+        </div>
         : <div/>
       }
       </div>

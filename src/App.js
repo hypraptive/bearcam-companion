@@ -41,7 +41,7 @@ function App({ signOut, user }) {
 
       if (event === "ready") {
         getImages();
-        //DataStore.observe(Images).subscribe(getImages);
+        DataStore.observe(Images).subscribe(getImages);
       }
     });
 

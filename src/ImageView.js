@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react'
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import { Card, Image, View, Divider, Text, Flex } from "@aws-amplify/ui-react";
+import { Card, Image, View, Divider, Text, Flex, Button } from "@aws-amplify/ui-react";
 import { DataStore } from "aws-amplify";
 import { Objects } from "./models";
+import { useNavigate } from "react-router-dom";
 import Boxes from './Boxes';
 import DeleteImage from './DeleteImage';
 
@@ -18,6 +19,12 @@ export function ImageView({images, user}) {
   const [prvIndex, setPrvIndex] = useState();
   const [nxtIndex, setNxtIndex] = useState();
 
+  const navigate = useNavigate();
+
+  async function buttonOnClickEdit (url) {
+    console.log("Go to", url);
+    navigate(url);
+  }
   useEffect(() => {
     if (images.length > 0) {
       console.log("Images Loaded");
@@ -130,9 +137,12 @@ export function ImageView({images, user}) {
       {isAdmin()
         ?
         <div>
-        <Link to={`/edit/${curImage.id}`}>
-          Edit
-        </Link>
+        <Button
+        children="Edit Image"
+        onClick={() => {
+          buttonOnClickEdit(`/edit/` + curImage.id);
+        }}
+        ></Button>
         <DeleteImage imageID={curImage.id} />
         </div>
         : <div/>

@@ -129,11 +129,48 @@ function getFetchOptions (box, imageID) {
   return(options)
 }
 
+updateImageInfo = async (imagesID, bearCount, bearList) => {
+  try {
+    const query = /* GraphQL */ `
+    mutation UPDATE_IMAGES($input: UpdateImagesInput!) {
+      updateImages(input: $input) {
+        id
+        bearCount
+        bearList
+      }
+    }`;
+  
+    const variables = {
+      input: {
+        id: imagesID,
+        bearCount: bearCount,
+        bearList: bearList
+      }
+    };
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'x-api-key': GRAPHQL_API_KEY
+      },
+      body: JSON.stringify({ query, variables })
+    };
+            
+    response = await fetch(GRAPHQL_ENDPOINT, options);
+    body = await response.json();
+    //console.log("body",body)
+  } catch (error) {
+    console.log("ERROR:", error);
+  }
+}
+
 exports.handler = async function(event, context, callback) {
   try { // Parse DynamoDB Images Records
     console.log("Parsing DynamoDB Images Records");
     const inserts = parseRecords(event.Records);
     for (insert of inserts) {
+      var bearCount = 0;
+      const bearList = ""
       // Call Rekognition on every new image
       console.log("Sending image to Rekognition", insert.Key)
       let detections = await processImage(insert);
@@ -141,6 +178,7 @@ exports.handler = async function(event, context, callback) {
       for (box of boxes) {
         // Save each bounding box to Objects
         console.log("Saving box to Objects for Image", insert.imageID);
+        if (box.Name === "Bear") bearCount += 1
         const options = getFetchOptions(box, insert.imageID);
         console.log(options);
         response = await fetch(GRAPHQL_ENDPOINT, options);
@@ -152,6 +190,8 @@ exports.handler = async function(event, context, callback) {
           console.log("GraphQL success")
         }
       }
+      // Update bear count for image
+      await updateImageInfo(insert.imageID, bearCount, bearList)
     }
   } catch (err) {
     callback(err.message);

@@ -32,7 +32,6 @@ export type AmplifyDependentResourcesAttributes = {
   "function": {
     "bcCountBears": {
       "Arn": "string",
-      "CloudWatchEventRule": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
       "Name": "string",

@@ -43,6 +43,7 @@ export function FrameList (images) {
           <View padding="xs">
             <Divider padding="xs" />
             <Text fontSize="0.75em">{image.date}</Text>
+            <Text fontSize="0.75em" width="10rem" isTruncated={true}>{image.bearList}</Text>
           </View>
         </Card>
       )}

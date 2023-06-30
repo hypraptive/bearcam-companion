@@ -111,6 +111,7 @@ export function ImageView({images, user}) {
           <View padding="xs">
             <Divider padding="xs" />
             <Text fontSize="0.75em">{curImage.date}</Text>
+            <Text fontSize="0.75em">{curImage.bearList}</Text>
           </View>
           </View>
         </Card>

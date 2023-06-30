@@ -1,7 +1,7 @@
 import { SelectField, Flex } from '@aws-amplify/ui-react';
 import { useState, useEffect } from 'react'
 import { Analytics, DataStore } from "aws-amplify";
-import { Identifications } from "./models";
+import { Identifications, Objects, Images } from "./models";
 
 export default function SetID ({ boxID, curList, username }) {
   const bearList = [
@@ -148,6 +148,53 @@ export default function SetID ({ boxID, curList, username }) {
 
   const [curSel, setCurSel] = useState("none");
 
+  function groupIdents(list, key) {
+    return list.reduce(function(rv, x) {
+      //(rv[x[key]] = rv[x[key]] || []).push(x);
+      rv[x[key]] = rv[x[key]] ? ++rv[x[key]] : 1;
+      return rv;
+    }, {});
+  };
+
+  // Update Bear Count and Bear List
+  async function updateBearInfo(boxId) {
+    // get image from boxID
+    const box = await DataStore.query(Objects, boxId);
+    const image = await DataStore.query(Images, box.imagesID);
+
+    // get boxes for image
+    const boxes = await DataStore.query(Objects, c => c.imagesID("eq", image.id));
+    
+    // count number of bears and get list
+    var bearCount = 0
+    var bearList = ""
+    for (const box of boxes) {
+      if (box.label === "Bear") {
+        bearCount += 1
+        const idents = await DataStore.query(Identifications, c => c.objectsID("eq", box.id));
+        if (idents.length) {
+          const gIdents = groupIdents(idents,"name");
+          const pairIdents = Object.entries(gIdents).sort((a,b) => b[1]-a[1]);
+          console.log("Ident:", pairIdents[0][0]);
+          bearList = bearList + pairIdents[0][0] + ","
+        }
+      }
+    }
+    bearList = bearList.substring(0,bearList.length-1);
+    console.log("Bear count =", bearCount)
+    console.log("Bear list =", bearList)
+
+    // update bearCount
+    const origImage = await DataStore.query(Images, image.id);
+    await DataStore.save(
+      Images.copyOf(origImage, updated => {
+        updated.bearCount = bearCount;
+        updated.bearList = bearList;
+      })
+    );
+  }
+  
+
   useEffect(() => {
     //console.log("user ", username)
     var userIdent = curList.find((ident) => {
@@ -186,6 +233,7 @@ export default function SetID ({ boxID, curList, username }) {
       );
       Analytics.record({ name: 'createId' });
     }
+    updateBearInfo(boxID);
   }
 
   return(

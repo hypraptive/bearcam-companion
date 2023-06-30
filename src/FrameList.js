@@ -6,10 +6,22 @@ export function FrameList (images) {
   return(
     <div>
     <Collection
-      items={images.images}
+      items={Object.values(images.images).map(({ id, url, date, bearList }) => ({
+        id,
+        url,
+        date,
+        bearList,
+      }))}
+//      items={images.images}
       type="grid"
       gap="20px"
       wrap="nowrap"
+      isSearchable
+      searchPlaceholder="Type number or name to search..."
+      searchFilter={(image, keyword) => {
+          if (image.bearList && image.bearList.toLowerCase().includes(keyword.toLowerCase())) {return(true)}
+        }
+      }
     >
       {(image, index) => (
         <Card

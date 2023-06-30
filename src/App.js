@@ -3,6 +3,7 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Hub } from "@aws-amplify/core";
 import { useState, useEffect } from 'react'
 import { DataStore, Predicates, SortDirection } from "aws-amplify";
+//import { DataStore, SortDirection } from "aws-amplify";
 import { Images } from "./models";
 import '@aws-amplify/ui-react/styles.css';
 
@@ -26,7 +27,19 @@ function App({ signOut, user }) {
 
   useEffect(() => {
     async function getImages() {
-      const images = await DataStore.query(Images, Predicates.ALL, {sort: s => s.date(SortDirection.DESCENDING)});
+      const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
+      var images
+      if (groups && groups.includes('admin')) {
+        images = await DataStore.query(Images, 
+          Predicates.ALL,
+          {sort: s => s.date(SortDirection.DESCENDING)}
+         );
+      } else {
+        images = await DataStore.query(Images, 
+          (c) => c.bearCount('gt', 0),
+          {sort: s => s.date(SortDirection.DESCENDING)}
+         );
+      }
       //console.log("Images", images)
       setImageList(images);
     }
@@ -52,7 +65,7 @@ function App({ signOut, user }) {
     return () => {
       removeListener();
     };
-  }, []);
+  }, [user]);
 
   return (
     <div className="App">

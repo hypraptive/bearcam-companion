@@ -4,7 +4,7 @@ import { Card, Flex } from "@aws-amplify/ui-react";
 import { Annotorious } from '@recogito/annotorious';
 import { Link } from 'react-router-dom';
 import { DataStore } from "aws-amplify";
-import { Objects } from "./models";
+import { Objects, Images } from "./models";
 
 import '@recogito/annotorious/dist/annotorious.min.css';
 // EditView.css adapted from Annotorious Shape Labels
@@ -54,6 +54,29 @@ function EditView({images, user}) {
         className: firstTag.value
       };
     }
+  }
+
+  // Update Bear Count
+  async function updateBearCount(imageId) {
+    // get boxes for image
+    const boxes = await DataStore.query(Objects, c => c.imagesID("eq", imageId));
+    
+    // count number of bears
+    var bearCount = 0
+    for (const box of boxes) {
+      if (box.label === "Bear") {
+        bearCount += 1
+      }
+    }
+    console.log("Bear count =", bearCount)
+
+    // update bearCount
+    const origImage = await DataStore.query(Images, imageId);
+    await DataStore.save(
+      Images.copyOf(origImage, updated => {
+        updated.bearCount = bearCount;
+      })
+    );
   }
 
 
@@ -144,6 +167,8 @@ function EditView({images, user}) {
           })
         );
 
+        updateBearCount(curImage.id);
+
         console.log('created', annotation);
       });
 
@@ -166,13 +191,20 @@ function EditView({images, user}) {
           })
         );
 
+        updateBearCount(original.imagesID);
+
         console.log('updated', annotation, previous);
       });
 
       annotorious.on('deleteAnnotation', async annotation => {
         // deleteAnnotation
+        console.log('To delete', annotation);
+        const annoID = annotation.id.replace('#', '');
+        console.log("annoID:", annoID)
         const todelete = await DataStore.query(Objects, annotation.id);
+        console.log("todelete:", todelete)
         DataStore.delete(todelete);
+        updateBearCount(todelete.imagesID);
         console.log('deleted', annotation);
       });
     }

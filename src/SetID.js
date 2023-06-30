@@ -177,6 +177,9 @@ export default function SetID ({ boxID, curList, username }) {
           const pairIdents = Object.entries(gIdents).sort((a,b) => b[1]-a[1]);
           console.log("Ident:", pairIdents[0][0]);
           bearList = bearList + pairIdents[0][0] + ","
+        } else {
+          console.log("Ident:", "Unknown");
+          bearList = bearList + "Unknown,"
         }
       }
     }

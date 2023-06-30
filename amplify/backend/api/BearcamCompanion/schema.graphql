@@ -29,5 +29,7 @@ type Images @model @auth(rules: [{allow: public}]) {
   date: AWSDateTime
   Objects: [Objects] @hasMany(indexName: "byImages", fields: ["id"])
   file: S3Object
+  bearCount: Int
+  bearList: String
 }
  

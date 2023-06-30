@@ -152,7 +152,9 @@ export const schema = {
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "objectsID"
+                        "associatedWith": [
+                            "objectsID"
+                        ]
                     }
                 },
                 "createdAt": {
@@ -241,7 +243,9 @@ export const schema = {
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "imagesID"
+                        "associatedWith": [
+                            "imagesID"
+                        ]
                     }
                 },
                 "file": {
@@ -250,6 +254,20 @@ export const schema = {
                     "type": {
                         "nonModel": "S3Object"
                     },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "bearCount": {
+                    "name": "bearCount",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "bearList": {
+                    "name": "bearList",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -325,6 +343,6 @@ export const schema = {
             }
         }
     },
-    "codegenVersion": "3.2.0",
-    "version": "a659c37affa93a7b374141f8e246c6ce"
+    "codegenVersion": "3.4.4",
+    "version": "738c001f4e614144078543b705efcae2"
 };

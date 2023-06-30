@@ -16,8 +16,8 @@ export default function MarketingFooter(props) {
       height="400px"
       position="relative"
       padding="0px 0px 0px 0px"
-      {...rest}
       {...getOverrideProps(overrides, "MarketingFooter")}
+      {...rest}
     >
       <View
         position="absolute"

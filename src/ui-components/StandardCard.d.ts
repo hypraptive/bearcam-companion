@@ -5,12 +5,20 @@
  **************************************************************************/
 
 import * as React from "react";
-import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { Images } from "../models";
-import { FlexProps } from "@aws-amplify/ui-react";
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { FlexProps, ImageProps, TextProps } from "@aws-amplify/ui-react";
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type StandardCardOverridesProps = {
+    StandardCard?: PrimitiveOverrideProps<FlexProps>;
+    image?: PrimitiveOverrideProps<ImageProps>;
+    "Card Area"?: PrimitiveOverrideProps<FlexProps>;
+    "Text Group"?: PrimitiveOverrideProps<FlexProps>;
+    "2021-11-14T17:28:00.000Z"?: PrimitiveOverrideProps<TextProps>;
+} & EscapeHatchProps;
 export declare type StandardCardProps = React.PropsWithChildren<Partial<FlexProps> & {
     images?: Images;
 } & {
-    overrides?: EscapeHatchProps | undefined | null;
+    overrides?: StandardCardOverridesProps | undefined | null;
 }>;
 export default function StandardCard(props: StandardCardProps): React.ReactElement;

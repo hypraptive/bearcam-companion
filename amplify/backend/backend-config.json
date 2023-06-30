@@ -1,159 +1,240 @@
 {
+  "analytics": {
+    "bearcamcompanion": {
+      "providerPlugin": "awscloudformation",
+      "service": "Pinpoint"
+    }
+  },
   "api": {
     "BearcamCompanion": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "output": {
         "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 90,
-              "apiKeyExpirationDate": "2023-01-21T04:24:00.969Z",
-              "description": "extend key"
-            }
-          },
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AWS_IAM"
             }
-          ]
+          ],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            },
+            "authenticationType": "API_KEY"
+          }
         }
-      }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
     },
     "bcExploreApi": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
-          "category": "function",
-          "resourceName": "bcExploreLambda",
           "attributes": [
             "Name",
             "Arn"
-          ]
+          ],
+          "category": "function",
+          "resourceName": "bcExploreLambda"
         }
-      ]
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
     }
   },
   "auth": {
     "BearcamCompanion": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
       "customAuth": false,
+      "dependsOn": [],
       "frontendAuthConfig": {
-        "socialProviders": [],
-        "usernameAttributes": [],
-        "signupAttributes": [
-          "EMAIL"
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": [
             "REQUIRES_LOWERCASE",
             "REQUIRES_NUMBERS",
             "REQUIRES_SYMBOLS",
             "REQUIRES_UPPERCASE"
-          ]
+          ],
+          "passwordPolicyMinLength": 8
         },
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
+        "signupAttributes": [
+          "EMAIL"
         ],
+        "socialProviders": [],
+        "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
         ]
-      }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "bcCountBears": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "BearcamCompanion"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "bcExploreLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "BearcamCompanion"
+        },
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "s3bearcamcompanionstoragecb0d4917"
+        },
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "bearcamcompanionbcNodeLayer"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "bcOnImagesFindObjects": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "BearcamCompanion"
+        },
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "s3bearcamcompanionstoragecb0d4917"
+        },
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "bearcamcompanionbcNodeLayer"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "bearcamcompanionbcNodeLayer": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_bcCountBears_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcCountBears"
+        }
+      ]
+    },
+    "AMPLIFY_function_bcCountBears_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcCountBears"
+        }
+      ]
+    },
+    "AMPLIFY_function_bcExploreLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcExploreLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_bcExploreLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcExploreLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_bcOnImagesFindObjects_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcOnImagesFindObjects"
+        }
+      ]
+    },
+    "AMPLIFY_function_bcOnImagesFindObjects_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcOnImagesFindObjects"
+        }
+      ]
+    },
+    "AMPLIFY_function_bearcamcompanionbcNodeLayer_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bearcamcompanionbcNodeLayer"
+        }
+      ]
+    },
+    "AMPLIFY_function_bearcamcompanionbcNodeLayer_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bearcamcompanionbcNodeLayer"
+        }
+      ]
     }
   },
   "predictions": {
     "identifyLabelsd92e673a": {
-      "providerPlugin": "awscloudformation",
-      "service": "Rekognition",
       "dependsOn": [],
-      "identifyType": "identifyLabels"
+      "identifyType": "identifyLabels",
+      "providerPlugin": "awscloudformation",
+      "service": "Rekognition"
     }
   },
   "storage": {
     "s3bearcamcompanionstoragecb0d4917": {
-      "service": "S3",
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
-      "dependsOn": []
-    }
-  },
-  "function": {
-    "bcOnImagesFindObjects": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "api",
-          "resourceName": "BearcamCompanion",
-          "attributes": [
-            "GraphQLAPIIdOutput",
-            "GraphQLAPIEndpointOutput",
-            "GraphQLAPIKeyOutput"
-          ]
-        },
-        {
-          "category": "storage",
-          "resourceName": "s3bearcamcompanionstoragecb0d4917",
-          "attributes": [
-            "BucketName"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "bearcamcompanionbcNodeLayer",
-          "attributes": [
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "bearcamcompanionbcNodeLayer": {
-      "providerPlugin": "awscloudformation",
-      "service": "LambdaLayer",
-      "build": true
-    },
-    "bcExploreLambda": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "api",
-          "resourceName": "BearcamCompanion",
-          "attributes": [
-            "GraphQLAPIIdOutput",
-            "GraphQLAPIEndpointOutput",
-            "GraphQLAPIKeyOutput"
-          ]
-        },
-        {
-          "category": "storage",
-          "resourceName": "s3bearcamcompanionstoragecb0d4917",
-          "attributes": [
-            "BucketName"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "bearcamcompanionbcNodeLayer",
-          "attributes": [
-            "Arn"
-          ]
-        }
-      ]
-    }
-  },
-  "analytics": {
-    "bearcamcompanion": {
-      "service": "Pinpoint",
-      "providerPlugin": "awscloudformation"
+      "service": "S3"
     }
   }
 }

@@ -17,21 +17,28 @@
         "BearcamCompanion": {}
       },
       "function": {
+        "bcExploreLambda": {
+          "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
+          "s3Key": "amplify-builds/bcExploreLambda-51536736544b67344562-build.zip"
+        },
         "bcOnImagesFindObjects": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
           "s3Key": "amplify-builds/bcOnImagesFindObjects-5658582f486561687254-build.zip"
         },
         "bearcamcompanionbcNodeLayer": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
-          "s3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion4c25a931-build.zip"
+          "s3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion8b9925a3-build.zip"
         },
-        "bcExploreLambda": {
+        "bcCountBears": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
-          "s3Key": "amplify-builds/bcExploreLambda-51536736544b67344562-build.zip"
+          "s3Key": "amplify-builds/bcCountBears-56656b4155764f2f4879-build.zip"
         }
       },
       "storage": {
         "s3bearcamcompanionstoragecb0d4917": {}
+      },
+      "analytics": {
+        "bearcamcompanion": {}
       },
       "api": {
         "BearcamCompanion": {},
@@ -39,9 +46,6 @@
       },
       "predictions": {
         "identifyLabelsd92e673a": {}
-      },
-      "analytics": {
-        "bearcamcompanion": {}
       }
     }
   }

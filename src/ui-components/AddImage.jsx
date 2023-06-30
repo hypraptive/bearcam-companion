@@ -25,11 +25,11 @@ export default function AddImage(props) {
     setTextFieldThreeTwoFourEightTwoSevenSevenFourValue,
   ] = useStateMutationAction("");
   const buttonOnClick = useDataStoreCreateAction({
+    model: Images,
     fields: {
       url: textFieldThreeTwoFourEightTwoSevenSevenTwoValue,
       date: textFieldThreeTwoFourEightTwoSevenSevenFourValue,
     },
-    model: Images,
     schema: schema,
   });
   return (
@@ -38,8 +38,8 @@ export default function AddImage(props) {
       direction="column"
       position="relative"
       padding="0px 0px 0px 0px"
-      {...rest}
       {...getOverrideProps(overrides, "AddImage")}
+      {...rest}
     >
       <Flex
         gap="16px"

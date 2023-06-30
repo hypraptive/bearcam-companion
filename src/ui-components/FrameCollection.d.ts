@@ -8,6 +8,11 @@ import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { StandardCardProps } from "./StandardCard";
 import { CollectionProps } from "@aws-amplify/ui-react";
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type FrameCollectionOverridesProps = {
+    FrameCollection?: PrimitiveOverrideProps<CollectionProps>;
+    StandardCard?: StandardCardProps;
+} & EscapeHatchProps;
 export declare type FrameCollectionProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
     items?: any[];
     overrideItems?: (collectionItem: {
@@ -15,6 +20,6 @@ export declare type FrameCollectionProps = React.PropsWithChildren<Partial<Colle
         index: number;
     }) => StandardCardProps;
 } & {
-    overrides?: EscapeHatchProps | undefined | null;
+    overrides?: FrameCollectionOverridesProps | undefined | null;
 }>;
 export default function FrameCollection(props: FrameCollectionProps): React.ReactElement;

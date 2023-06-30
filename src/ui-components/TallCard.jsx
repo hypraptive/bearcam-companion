@@ -19,8 +19,8 @@ export default function TallCard(props) {
       position="relative"
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
-      {...rest}
       {...getOverrideProps(overrides, "TallCard")}
+      {...rest}
     >
       <Image
         height="400px"

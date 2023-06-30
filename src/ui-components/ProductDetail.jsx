@@ -24,8 +24,8 @@ export default function ProductDetail(props) {
       alignItems="flex-start"
       position="relative"
       padding="0px 0px 0px 0px"
-      {...rest}
       {...getOverrideProps(overrides, "ProductDetail")}
+      {...rest}
     >
       <Flex
         gap="32px"

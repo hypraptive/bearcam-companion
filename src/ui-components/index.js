@@ -28,3 +28,5 @@ export { default as SideBar } from "./SideBar";
 export { default as ProductCard } from "./ProductCard";
 export { default as FrameCollection } from "./FrameCollection";
 export { default as studioTheme } from "./studioTheme";
+export { default as ImagesCreateForm } from "./ImagesCreateForm";
+export { default as ImagesUpdateForm } from "./ImagesUpdateForm";

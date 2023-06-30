@@ -6,8 +6,22 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { FlexProps } from "@aws-amplify/ui-react";
+import { ButtonProps, DividerProps, FlexProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type EditProfileOverridesProps = {
+    EditProfile?: PrimitiveOverrideProps<FlexProps>;
+    Content?: PrimitiveOverrideProps<FlexProps>;
+    "Edit Profile29766913"?: PrimitiveOverrideProps<FlexProps>;
+    "Edit Profile29766916"?: PrimitiveOverrideProps<TextProps>;
+    Divider29766917?: PrimitiveOverrideProps<DividerProps>;
+    Forms?: PrimitiveOverrideProps<FlexProps>;
+    TextField29766922?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField29766923?: PrimitiveOverrideProps<TextFieldProps>;
+    TextField29766924?: PrimitiveOverrideProps<TextFieldProps>;
+    Divider29766925?: PrimitiveOverrideProps<DividerProps>;
+    Button?: PrimitiveOverrideProps<ButtonProps>;
+} & EscapeHatchProps;
 export declare type EditProfileProps = React.PropsWithChildren<Partial<FlexProps> & {
-    overrides?: EscapeHatchProps | undefined | null;
+    overrides?: EditProfileOverridesProps | undefined | null;
 }>;
 export default function EditProfile(props: EditProfileProps): React.ReactElement;

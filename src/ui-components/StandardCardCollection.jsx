@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Images, Objects } from "../models";
+import { Images } from "../models";
 import {
   getOverrideProps,
   useDataStoreBinding,
@@ -15,26 +15,35 @@ import StandardCard from "./StandardCard";
 import { Collection } from "@aws-amplify/ui-react";
 export default function StandardCardCollection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
-  const objectsItems = useDataStoreBinding({
-    type: "collection",
-    model: Objects,
-  }).items;
+  const [items, setItems] = React.useState(undefined);
   const itemsDataStore = useDataStoreBinding({
     type: "collection",
     model: Images,
-  }).items.map((item) => ({
-    ...item,
-    Objects: objectsItems.filter((model) => model.imagesID === item.id),
-  }));
-  const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
+  }).items;
+  React.useEffect(() => {
+    if (itemsProp !== undefined) {
+      setItems(itemsProp);
+      return;
+    }
+    async function setItemsFromDataStore() {
+      var loaded = await Promise.all(
+        itemsDataStore.map(async (item) => ({
+          ...item,
+          Objects: await item.Objects.toArray(),
+        }))
+      );
+      setItems(loaded);
+    }
+    setItemsFromDataStore();
+  }, [itemsProp, itemsDataStore]);
   return (
     <Collection
       type="list"
       direction="column"
       justifyContent="stretch"
       items={items || []}
-      {...rest}
       {...getOverrideProps(overrides, "StandardCardCollection")}
+      {...rest}
     >
       {(item, index) => (
         <StandardCard

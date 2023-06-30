@@ -2,5 +2,5 @@
   "AppSyncApiName": "BearcamCompanion",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2022-10-23T04:25:22.397Z"
+  "AuthModeLastUpdated": "2023-06-22T02:13:24.670Z"
 }

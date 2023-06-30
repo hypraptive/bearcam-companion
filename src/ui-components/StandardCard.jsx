@@ -33,8 +33,8 @@ export default function StandardCard(props) {
       onMouseLeave={() => {
         standardCardOnMouseLeave();
       }}
-      {...rest}
       {...getOverrideProps(overrides, "StandardCard")}
+      {...rest}
     >
       <Image
         width="320px"

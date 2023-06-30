@@ -49,7 +49,7 @@ export function Instructions ({ user }) {
     <ul>
       <li>Look at the images and learn the bear identifications from others.</li>
       <ul>
-        <li>Each box shows the mose selected identification and the number of times
+        <li>Each box shows the most selected identification and the number of times
         that identification was selected out of the total number of identifications,
         for example "480 Otis (7/8)"</li>
         <li>A label of "???" means no one has identified the bear.</li>
@@ -84,6 +84,7 @@ export function Instructions ({ user }) {
         copying the URL.</li>
         <li>To share an image with the boxes and labels, you have to use screen capture.</li>
       </ul>
+      <li>You can search for bears by name or number. Searching for "unknown" will find images with bears that have not been identified.</li>
     </ul>
 
     Example:

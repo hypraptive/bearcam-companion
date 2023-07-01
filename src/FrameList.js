@@ -17,7 +17,7 @@ export function FrameList (images) {
       gap="20px"
       wrap="nowrap"
       isSearchable
-      searchPlaceholder="Type number or name to search..."
+      searchPlaceholder="Type bear name or number..."
       searchFilter={(image, keyword) => {
           if (image.bearList && image.bearList.toLowerCase().includes(keyword.toLowerCase())) {return(true)}
         }

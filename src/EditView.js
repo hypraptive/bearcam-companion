@@ -4,7 +4,7 @@ import { Card, Flex } from "@aws-amplify/ui-react";
 import { Annotorious } from '@recogito/annotorious';
 import { Link } from 'react-router-dom';
 import { DataStore } from "aws-amplify";
-import { Objects, Images } from "./models";
+import { Identifications, Objects, Images } from "./models";
 
 import '@recogito/annotorious/dist/annotorious.min.css';
 // EditView.css adapted from Annotorious Shape Labels
@@ -56,6 +56,14 @@ function EditView({images, user}) {
     }
   }
 
+  function groupIdents(list, key) {
+    return list.reduce(function(rv, x) {
+      //(rv[x[key]] = rv[x[key]] || []).push(x);
+      rv[x[key]] = rv[x[key]] ? ++rv[x[key]] : 1;
+      return rv;
+    }, {});
+  };
+
   // Update Bear Count
   async function updateBearCount(imageId) {
     // get boxes for image
@@ -63,18 +71,32 @@ function EditView({images, user}) {
     
     // count number of bears
     var bearCount = 0
+    var bearList = ""
     for (const box of boxes) {
       if (box.label === "Bear") {
         bearCount += 1
+        const idents = await DataStore.query(Identifications, c => c.objectsID("eq", box.id));
+        if (idents.length) {
+          const gIdents = groupIdents(idents,"name");
+          const pairIdents = Object.entries(gIdents).sort((a,b) => b[1]-a[1]);
+          console.log("Ident:", pairIdents[0][0]);
+          bearList = bearList + pairIdents[0][0] + ","
+        } else {
+          console.log("Ident:", "Unknown");
+          bearList = bearList + "Unknown,"
+        }
       }
     }
+    bearList = bearList.substring(0,bearList.length-1);
     console.log("Bear count =", bearCount)
+    console.log("Bear list =", bearList)
 
     // update bearCount
     const origImage = await DataStore.query(Images, imageId);
     await DataStore.save(
       Images.copyOf(origImage, updated => {
         updated.bearCount = bearCount;
+        updated.bearList = bearList;
       })
     );
   }

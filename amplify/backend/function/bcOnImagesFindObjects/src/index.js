@@ -178,7 +178,10 @@ exports.handler = async function(event, context, callback) {
       for (box of boxes) {
         // Save each bounding box to Objects
         console.log("Saving box to Objects for Image", insert.imageID);
-        if (box.Name === "Bear") bearCount += 1
+        if (box.Name === "Bear") {
+          bearCount += 1
+          bearList = bearList + "Unknown,"
+        }
         const options = getFetchOptions(box, insert.imageID);
         console.log(options);
         response = await fetch(GRAPHQL_ENDPOINT, options);
@@ -190,6 +193,10 @@ exports.handler = async function(event, context, callback) {
           console.log("GraphQL success")
         }
       }
+      if (bearList) {
+        bearList = bearList.substring(0,bearList.length-1);
+      }
+
       // Update bear count for image
       await updateImageInfo(insert.imageID, bearCount, bearList)
     }

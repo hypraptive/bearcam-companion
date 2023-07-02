@@ -170,7 +170,7 @@ exports.handler = async function(event, context, callback) {
     const inserts = parseRecords(event.Records);
     for (insert of inserts) {
       var bearCount = 0;
-      const bearList = ""
+      var bearList = ""
       // Call Rekognition on every new image
       console.log("Sending image to Rekognition", insert.Key)
       let detections = await processImage(insert);

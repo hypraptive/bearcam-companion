@@ -152,9 +152,7 @@ export const schema = {
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": [
-                            "objectsID"
-                        ]
+                        "associatedWith": "objectsID"
                     }
                 },
                 "createdAt": {
@@ -243,9 +241,7 @@ export const schema = {
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": [
-                            "imagesID"
-                        ]
+                        "associatedWith": "imagesID"
                     }
                 },
                 "file": {
@@ -266,6 +262,13 @@ export const schema = {
                 },
                 "bearList": {
                     "name": "bearList",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "camFeed": {
+                    "name": "camFeed",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -344,5 +347,5 @@ export const schema = {
         }
     },
     "codegenVersion": "3.4.4",
-    "version": "738c001f4e614144078543b705efcae2"
+    "version": "b8529366d957463cb8033a489f262f34"
 };

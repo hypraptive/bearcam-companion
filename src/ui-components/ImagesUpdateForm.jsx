@@ -28,11 +28,13 @@ export default function ImagesUpdateForm(props) {
     date: "",
     bearCount: "",
     bearList: "",
+    camFeed: "",
   };
   const [url, setUrl] = React.useState(initialValues.url);
   const [date, setDate] = React.useState(initialValues.date);
   const [bearCount, setBearCount] = React.useState(initialValues.bearCount);
   const [bearList, setBearList] = React.useState(initialValues.bearList);
+  const [camFeed, setCamFeed] = React.useState(initialValues.camFeed);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = imagesRecord
@@ -42,6 +44,7 @@ export default function ImagesUpdateForm(props) {
     setDate(cleanValues.date);
     setBearCount(cleanValues.bearCount);
     setBearList(cleanValues.bearList);
+    setCamFeed(cleanValues.camFeed);
     setErrors({});
   };
   const [imagesRecord, setImagesRecord] = React.useState(imagesModelProp);
@@ -60,6 +63,7 @@ export default function ImagesUpdateForm(props) {
     date: [],
     bearCount: [],
     bearList: [],
+    camFeed: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -108,6 +112,7 @@ export default function ImagesUpdateForm(props) {
           date,
           bearCount,
           bearList,
+          camFeed,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -167,6 +172,7 @@ export default function ImagesUpdateForm(props) {
               date,
               bearCount,
               bearList,
+              camFeed,
             };
             const result = onChange(modelFields);
             value = result?.url ?? value;
@@ -196,6 +202,7 @@ export default function ImagesUpdateForm(props) {
               date: value,
               bearCount,
               bearList,
+              camFeed,
             };
             const result = onChange(modelFields);
             value = result?.date ?? value;
@@ -227,6 +234,7 @@ export default function ImagesUpdateForm(props) {
               date,
               bearCount: value,
               bearList,
+              camFeed,
             };
             const result = onChange(modelFields);
             value = result?.bearCount ?? value;
@@ -254,6 +262,7 @@ export default function ImagesUpdateForm(props) {
               date,
               bearCount,
               bearList: value,
+              camFeed,
             };
             const result = onChange(modelFields);
             value = result?.bearList ?? value;
@@ -267,6 +276,34 @@ export default function ImagesUpdateForm(props) {
         errorMessage={errors.bearList?.errorMessage}
         hasError={errors.bearList?.hasError}
         {...getOverrideProps(overrides, "bearList")}
+      ></TextField>
+      <TextField
+        label="Cam feed"
+        isRequired={false}
+        isReadOnly={false}
+        value={camFeed}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              url,
+              date,
+              bearCount,
+              bearList,
+              camFeed: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.camFeed ?? value;
+          }
+          if (errors.camFeed?.hasError) {
+            runValidationTasks("camFeed", value);
+          }
+          setCamFeed(value);
+        }}
+        onBlur={() => runValidationTasks("camFeed", camFeed)}
+        errorMessage={errors.camFeed?.errorMessage}
+        hasError={errors.camFeed?.hasError}
+        {...getOverrideProps(overrides, "camFeed")}
       ></TextField>
       <Flex
         justifyContent="space-between"

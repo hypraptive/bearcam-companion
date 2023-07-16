@@ -17,12 +17,14 @@ export declare type ImagesCreateFormInputValues = {
     date?: string;
     bearCount?: number;
     bearList?: string;
+    camFeed?: string;
 };
 export declare type ImagesCreateFormValidationValues = {
     url?: ValidationFunction<string>;
     date?: ValidationFunction<string>;
     bearCount?: ValidationFunction<number>;
     bearList?: ValidationFunction<string>;
+    camFeed?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ImagesCreateFormOverridesProps = {
@@ -31,6 +33,7 @@ export declare type ImagesCreateFormOverridesProps = {
     date?: PrimitiveOverrideProps<TextFieldProps>;
     bearCount?: PrimitiveOverrideProps<TextFieldProps>;
     bearList?: PrimitiveOverrideProps<TextFieldProps>;
+    camFeed?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ImagesCreateFormProps = React.PropsWithChildren<{
     overrides?: ImagesCreateFormOverridesProps | undefined | null;

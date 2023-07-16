@@ -31,5 +31,6 @@ type Images @model @auth(rules: [{allow: public}]) {
   file: S3Object
   bearCount: Int
   bearList: String
+  camFeed: String
 }
  

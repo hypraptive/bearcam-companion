@@ -23,11 +23,11 @@
         },
         "bcOnImagesFindObjects": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
-          "s3Key": "amplify-builds/bcOnImagesFindObjects-6e565261694430447951-build.zip"
+          "s3Key": "amplify-builds/bcOnImagesFindObjects-2b7151482f6a676c2f76-build.zip"
         },
         "bearcamcompanionbcNodeLayer": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
-          "s3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion8b9925a3-build.zip"
+          "s3Key": "amplify-builds/bearcamcompanionbcNodeLayer-LambdaLayerVersion512b4ebf-build.zip"
         },
         "bcCountBears": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",

@@ -1,6 +1,7 @@
 import { Collection, Card, Image, View, Divider, Text } from "@aws-amplify/ui-react";
 import React from 'react'
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 export function FrameList (images) {
   return(
@@ -42,7 +43,7 @@ export function FrameList (images) {
           </Link>
           <View padding="xs">
             <Divider padding="xs" />
-            <Text fontSize="0.75em">{image.date}</Text>
+            <Text fontSize="0.75em">{dayjs(image.date).format("DD MMM YYYY [at] h:mm:ss a")}</Text>
             <Text fontSize="0.75em" width="10rem" isTruncated={true}>{image.bearList}</Text>
           </View>
         </Card>

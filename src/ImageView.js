@@ -8,6 +8,7 @@ import { Objects } from "./models";
 import { useNavigate } from "react-router-dom";
 import Boxes from './Boxes';
 import DeleteImage from './DeleteImage';
+import dayjs from 'dayjs';
 
 export function ImageView({images, user}) {
   let params = useParams();
@@ -110,7 +111,7 @@ export function ImageView({images, user}) {
           </div>
           <View padding="xs">
             <Divider padding="xs" />
-            <Text fontSize="0.75em">{curImage.date}</Text>
+            <Text fontSize="0.75em">{dayjs(curImage.date).format("DD MMM YYYY [at] h:mm:ss a")}</Text>
             <Text fontSize="0.75em">{curImage.bearList}</Text>
           </View>
           </View>

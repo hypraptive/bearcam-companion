@@ -111,7 +111,7 @@ export function ImageView({images, user}) {
           </div>
           <View padding="xs">
             <Divider padding="xs" />
-            <Text fontSize="0.75em">{dayjs(curImage.date).format("DD MMM YYYY [at] h:mm:ss a")}</Text>
+            <Text fontSize="0.75em">{curImage.camFeed}: {dayjs(curImage.date).format("DD MMM YYYY [at] h:mm:ss a")}</Text>
             <Text fontSize="0.75em">{curImage.bearList}</Text>
           </View>
           </View>

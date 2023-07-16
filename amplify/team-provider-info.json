@@ -19,7 +19,7 @@
       "function": {
         "bcExploreLambda": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",
-          "s3Key": "amplify-builds/bcExploreLambda-396a4a44517437786330-build.zip"
+          "s3Key": "amplify-builds/bcExploreLambda-37372f38376674374f43-build.zip"
         },
         "bcOnImagesFindObjects": {
           "deploymentBucketName": "amplify-bearcamcompanion-staging-43951-deployment",

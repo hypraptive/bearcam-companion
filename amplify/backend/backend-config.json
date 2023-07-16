@@ -156,6 +156,72 @@
       "service": "LambdaLayer"
     }
   },
+  "parameters": {
+    "AMPLIFY_function_bcCountBears_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcCountBears"
+        }
+      ]
+    },
+    "AMPLIFY_function_bcCountBears_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcCountBears"
+        }
+      ]
+    },
+    "AMPLIFY_function_bcExploreLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcExploreLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_bcExploreLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcExploreLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_bcOnImagesFindObjects_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcOnImagesFindObjects"
+        }
+      ]
+    },
+    "AMPLIFY_function_bcOnImagesFindObjects_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bcOnImagesFindObjects"
+        }
+      ]
+    },
+    "AMPLIFY_function_bearcamcompanionbcNodeLayer_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bearcamcompanionbcNodeLayer"
+        }
+      ]
+    },
+    "AMPLIFY_function_bearcamcompanionbcNodeLayer_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bearcamcompanionbcNodeLayer"
+        }
+      ]
+    }
+  },
   "predictions": {
     "identifyLabelsd92e673a": {
       "dependsOn": [],

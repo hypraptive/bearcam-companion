@@ -115,7 +115,7 @@ async function uploadImageS3Public (fileName, imageData) {
   }
 }
 
-async function createImageEntry (fileUrl, createdDate) {
+async function createImageEntry (fileUrl, createdDate, feedCode) {
   const fileName = path.basename(fileUrl);
   try {
     const resp = await axios.post(GRAPHQL_ENDPOINT,
@@ -126,6 +126,7 @@ async function createImageEntry (fileUrl, createdDate) {
               id
               url
               date
+              camFeed
               file{
                 bucket
                 region
@@ -142,6 +143,7 @@ async function createImageEntry (fileUrl, createdDate) {
           input: {
             url: fileUrl,
             date: createdDate,
+            camFeed: feedCode,
             file: {
               bucket: bucketName,
               region: process.env.AWS_REGION,
@@ -159,6 +161,35 @@ async function createImageEntry (fileUrl, createdDate) {
   } catch (err) {
     throw new Error(err);
   }
+}
+
+/**********************
+ * Feeds:
+ * BF = brown-bear-salmon-cam-brooks-falls
+ * RF = brown-bear-salmon-cam-the-riffles
+ * BFL = brooks-falls-brown-bears-low
+ * KRV = brown-bear-salmon-cam-lower-river
+ * RW = river-watch-brown-bear-salmon-cams
+ **********************/
+function codeFeed (feed) {
+  var feedCode = "BF";
+  switch (feed) {
+    case 'brown-bear-salmon-cam-the-riffles':
+      feedCode = "RF";
+      break;
+    case 'brooks-falls-brown-bears-low':
+      feedCode = "BFL";
+      break;
+    case 'brown-bear-salmon-cam-lower-river':
+      feedCode = "KRV";
+      break;
+    case 'river-watch-brown-bear-salmon-cams':
+      feedCode = "RW";
+      break;
+    default:
+      feedCode = "BF";
+  }
+  return (feedCode);
 }
 
 /**********************
@@ -202,6 +233,15 @@ app.get('/explore/list', async (request, response) => {
  *
  * Get a the latest image from <feed>, store it to S3 bucket and
  * add details to Images table.
+ * 
+ * Feeds:
+ * BF = brown-bear-salmon-cam-brooks-falls
+ * RF = brown-bear-salmon-cam-the-riffles
+ * BFL = brooks-falls-brown-bears-low
+ * KRV = brown-bear-salmon-cam-lower-river
+ * RW = river-watch-brown-bear-salmon-cams
+ * 
+ * BF =Brooks Falls, BFL = Brooks Falls Low, RF = Riffles, RW = River Watch, KRV = Kat’s River View
  **********************/
  app.post('/explore/latest', async (request, response) => {
    console.log("Request URL:", request.url)
@@ -249,7 +289,7 @@ app.get('/explore/list', async (request, response) => {
      console.log("Uploaded file to S3:", fileName);
 
      // Add image to Images table
-     await createImageEntry(fileUrl, createdDate);
+     await createImageEntry(fileUrl, createdDate, codeFeed(feed));
      console.log('Created Image Entry for', fileName);
     } else {
       console.log('No new images');
@@ -290,7 +330,7 @@ app.get('/explore/list', async (request, response) => {
     console.log("Uploaded file to S3:", fileName);
 
     // Add image to Images table
-    await createImageEntry (fileUrl, createdDate);
+    await createImageEntry (fileUrl, createdDate, "BF");
     console.log('Created Image Entry for', fileName);
 
     response.json({success: 'post call succeed!', url: request.url, body: request.body})

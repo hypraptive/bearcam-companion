@@ -36,7 +36,7 @@ export function FrameList (images) {
             to={`/image/${image.id}`}
           >
             <Image
-              src={image.url}
+              src={image.url.replace(".ts.jpg",".ts_thumbnail.jpg")}
               alt={image.id}
             />
           </Link>

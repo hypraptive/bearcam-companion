@@ -244,15 +244,17 @@ app.get('/explore/list', async (request, response) => {
  * BF =Brooks Falls, BFL = Brooks Falls Low, RF = Riffles, RW = River Watch, KRV = Kat’s River View
  **********************/
  app.post('/explore/latest', async (request, response) => {
-   console.log("Request URL:", request.url)
-   console.log("Request Body:", request.body)
+  //console.log("Request:", request)
+  console.log("Request URL:", request.url)
+  console.log("Request Body:", request.body)
    var respData = {};
 
    // Get latest image from <feed>
    var limit = 1;
    var feed = 'brown-bear-salmon-cam-brooks-falls';
    if ("feed" in request.body) {
-     feed = request.body.feed;
+    //console.log("Got request.body")
+    feed = request.body.feed;
    }
    const exUrl = exploreURL + 'query?feed=' + feed + exploreOption + '&page_size=' + limit;
    console.log("URL:", exUrl)

@@ -6,13 +6,42 @@ import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);
 
-export function GetLatestImage () {
+/**********************
+ * Feeds:
+ * BF = brown-bear-salmon-cam-brooks-falls
+ * RF = brown-bear-salmon-cam-the-riffles
+ * BFL = brooks-falls-brown-bears-low
+ * KRV = brown-bear-salmon-cam-lower-river
+ * RW = river-watch-brown-bear-salmon-cams
+ **********************/
+function decodeFeed (feedCode) {
+  var feed = "brown-bear-salmon-cam-brooks-falls";
+  switch (feedCode) {
+    case "RF":
+      feed = 'brown-bear-salmon-cam-the-riffles';
+      break;
+    case "BFL":
+      feed = 'brooks-falls-brown-bears-low';
+      break;
+    case "KRV":
+      feed = 'brown-bear-salmon-cam-lower-river';
+      break;
+    case "RW":
+      feed = 'river-watch-brown-bear-salmon-cams';
+      break;
+    default:
+      feed = "brown-bear-salmon-cam-brooks-falls";
+  }
+  return (feed);
+}
+
+export function GetLatestImage ({feed}) {
   async function buttonOnClick () {
-    console.log("Get latest image from Explore");
+    console.log("Get latest" + feed + "image");
     const apiName = 'bcExploreApi';
     const path = '/explore/latest';
     const myInit = { // OPTIONAL
-        body: {"feed": "brown-bear-salmon-cam-brooks-falls"}, // replace this with attributes you need
+        body: {"feed": decodeFeed(feed)}, // replace this with attributes you need
         headers: {
           'Content-Type': 'application/json'
         } // OPTIONAL
@@ -24,7 +53,7 @@ export function GetLatestImage () {
 
   return(
     <Button
-    children="Get Latest from Explore"
+    children={"Get latest " + feed + " image"}
     onClick={() => {
       buttonOnClick();
     }}

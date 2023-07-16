@@ -18,7 +18,8 @@ export function AdminView ({ user }) {
           ?
             <div>
               <GetImageList/>
-              <GetLatestImage/>
+              <GetLatestImage feed={"BF"}/>
+              <GetLatestImage feed={"RF"}/>
             </div>
           : <div>No Access</div>
         }

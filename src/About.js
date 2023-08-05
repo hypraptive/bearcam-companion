@@ -59,8 +59,8 @@ export function About ({ user }) {
     <ul>
     <li>Utilize AWS services and machine learning to enhance the bear viewing experience</li>
     <li>Help newer members of the bear cam community identify bears</li>
-    <li>Enable experienced memebers of the community to share their knowledge of the bears</li>
-    <li>Leverage community knoledge to teach the application to identify the bears</li>
+    <li>Enable experienced members of the community to share their knowledge of the bears</li>
+    <li>Leverage community knowledge to teach the application to identify the bears</li>
     </ul>
     We hope you find this project beneficial. Please help us continue to improve by
     identifying bears! For information on how to contribute, see

@@ -176,21 +176,23 @@ exports.handler = async function(event, context, callback) {
       let detections = await processImage(insert);
       const boxes = parseDetections(detections);
       for (box of boxes) {
-        // Save each bounding box to Objects
-        console.log("Saving box to Objects for Image", insert.imageID);
+        // Save Bear bounding box to Objects, skip non-bears
         if (box.Name === "Bear") {
+          console.log("Saving Bear box to Objects for Image", insert.imageID);
           bearCount += 1
           bearList = bearList + "Unknown,"
-        }
-        const options = getFetchOptions(box, insert.imageID);
-        console.log(options);
-        response = await fetch(GRAPHQL_ENDPOINT, options);
-        console.log(response)
-        body = await response.json();
-        if (body.errors) {
-          console.log("GraphQL error", body);
+          const options = getFetchOptions(box, insert.imageID);
+          console.log(options);
+          response = await fetch(GRAPHQL_ENDPOINT, options);
+          console.log(response)
+          body = await response.json();
+          if (body.errors) {
+            console.log("GraphQL error", body);
+          } else {
+            console.log("GraphQL success")
+          }
         } else {
-          console.log("GraphQL success")
+          console.log("Skipping non-bear for Image", insert.imageID);
         }
       }
       if (bearList) {

@@ -44,6 +44,10 @@ function App({ signOut, user }) {
       setImageList(images);
     }
 
+    DataStore.configure({
+      maxRecordsToSync: 100000,
+    });
+    
     // Create listener that will stop observing the model once the sync process is done
     const removeListener = Hub.listen("datastore", async (capsule) => {
       const {

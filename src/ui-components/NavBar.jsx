@@ -18,7 +18,7 @@ export default function NavBar(props) {
     url: "http://www.bearid.org",
   });
   const homeOnClick = useNavigateAction({ type: "url", url: "/" });
-  const identifyOnClick = useNavigateAction({ type: "url", url: "/view" });
+  const identifyOnClick = useNavigateAction({ type: "url", url: "/leader" });
   const editOnClick = useNavigateAction({ type: "url", url: "/admin" });
   const instructionsOnClick = useNavigateAction({
     type: "url",

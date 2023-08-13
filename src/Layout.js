@@ -35,13 +35,13 @@ function Layout({ signOut, user, images }) {
       "Home": {style: {cursor:'pointer'}},
       "Instructions": {style: {cursor:'pointer'}},
       "About": {style: {cursor:'pointer'}},
-      "Identify": {children: "View", display:'none'},
+      "Identify": {children: "Leader Board", style: {cursor:'pointer'}},
       "Edit": {children: "Admin", style: {cursor:'pointer'}, display: isAdmin()?'block':'none'}
     }} />
       <Heading level={4}>Bearcam Companion</Heading>
       <Outlet />
       <footer className="App-footer">
-        <h2>&copy;2022 BearID Project</h2>
+        <h2>&copy;2023 BearID Project</h2>
       </footer>
     </div>
   );

@@ -21,6 +21,7 @@ import AdminView from './AdminView';
 import EditView from './EditView';
 import Instructions from './Instructions';
 import About from './About';
+import Leader from './Leader';
 
 function App({ signOut, user }) {
   const [imageList, setImageList] = useState([]);
@@ -84,6 +85,7 @@ function App({ signOut, user }) {
           <Route path="admin" element={<AdminView user={user} />} />
           <Route path="instructions" element={<Instructions />} />
           <Route path="about" element={<About />} />
+          <Route path="leader" element={<Leader user={user} />} />
         </Route>
       </Routes>
     </BrowserRouter>

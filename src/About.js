@@ -45,7 +45,7 @@ export function About ({ user }) {
     <br/>
     <br/>
     <Image width="50%" align="center"
-    src="https://res.cloudinary.com/practicaldev/image/fetch/s--rw0NSRqJ--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ng4b8srovsm4aqscrck1.png" />
+    src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fng4b8srovsm4aqscrck1.png" />
     <br/>
     In March of 2022, one of those original engineers
     , <Link href="https://dev.to/bluevalhalla" isExternal={true}>Ed Miller <FiExternalLink/></Link>,

@@ -2,7 +2,7 @@ import './App.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Hub } from "@aws-amplify/core";
 import { useState, useEffect } from 'react'
-import { DataStore, syncExpression, Predicates, SortDirection } from "aws-amplify";
+import { DataStore, Predicates, SortDirection } from "aws-amplify";
 //import { DataStore, SortDirection } from "aws-amplify";
 import { Images } from "./models";
 import '@aws-amplify/ui-react/styles.css';

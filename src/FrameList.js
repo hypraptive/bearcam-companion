@@ -9,8 +9,8 @@ export function FrameList (images) {
   const [feed, setFeed] = React.useState('BF');
 
 if ((images != null) && (images.images.length > 0)) {
-  let filteredImages = images.images.filter(image => (image.date.substring(0,4) == year) && 
-    ((image.camFeed == feed) || ((feed === 'BF') && (image.camFeed === null)) || (feed === 'All')));
+  let filteredImages = images.images.filter(image => (image.date.substring(0,4) === year) && 
+    ((image.camFeed === feed) || ((feed === 'BF') && (image.camFeed === null)) || (feed === 'All')));
   //let filteredImages = images.images.filter(image => (image.date.substring(0,4) == year));
   return(
     <div>

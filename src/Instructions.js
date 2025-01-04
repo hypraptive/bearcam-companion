@@ -26,6 +26,10 @@ export function Instructions ({ user }) {
     >
     <Text fontSize="1em"
     >
+    Note: It can take ~30 seconds to download the data at the start. If you still
+    data, try refreshing the page. Also check the year and cam feed.
+    <br></br>
+    <br></br>
     Bearcam Companion is meant to help us share identifications of which bears we
     see on the bear cams. Here's what the application does:
     <ul>
@@ -34,7 +38,7 @@ export function Instructions ({ user }) {
       isExternal={true}>Brooks Falls Brown Bears <FiExternalLink/></Link>.</li>
       <ul>
         <li>Since new images are added semi-manually, they do not update all the time.</li>
-        <li>More camera feeds may be added later.</li>
+        <li>Current cam feeds are Brooks Falls (BF) and Riffles (RF). More camera feeds may be added later.</li>
         <li>Manual upload may be added later.</li>
       </ul>
       <li>The application finds the bears and draws boxes around them.</li>
@@ -85,6 +89,8 @@ export function Instructions ({ user }) {
         <li>To share an image with the boxes and labels, you have to use screen capture.</li>
       </ul>
       <li>You can search for bears by name or number. Searching for "unknown" will find images with bears that have not been identified.</li>
+      <li>You can change the year or cam feed in the main view by clicking the appropriate drop down toggles.</li>
+      <li>You can change pages (only 100 images are shown at a time) using the links at the bottom.</li>
     </ul>
 
     Example:
@@ -93,6 +99,9 @@ export function Instructions ({ user }) {
     Link: <Link href="/image/37d7e1cd-a8c0-401e-af75-a8f3cb6d3dac">https://app.bearid.org/image/37d7e1cd-a8c0-401e-af75-a8f3cb6d3dac</Link>
     <br/>
     <Image width="50%" align="center" src="https://uploads.disquscdn.com/images/a79cb644cf6a1772a39fffa274635bde9c9603c2a00d5ff24eadef6c56acd8f1.png" />
+    <br/>
+    <br/>
+    Check the Leader Board to find out who are the top identifiers!
     <br/>
     <br/>
     </Text>
@@ -112,7 +121,7 @@ export function Instructions ({ user }) {
     <ul>
       <li>If you log out and log back in, the image list may be empty. Please refresh.</li>
       <li>There may be other issues where you need to refresh the page once in a while to get the latest images.</li>
-      <li>There is no way to delete an id</li>
+      <li>There is no way to delete an id, but you can change it to another bear or something more generic like Unknown or Unknown Adult.</li>
     </ul>
     You can send email to bcc@hypraptive.com with questions, problems and suggestions.
     </Text>

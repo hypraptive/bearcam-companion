@@ -2,7 +2,7 @@ import './App.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Hub } from "@aws-amplify/core";
 import { useState, useEffect } from 'react'
-import { DataStore, Predicates, SortDirection } from "aws-amplify";
+import { DataStore, syncExpression, Predicates, SortDirection } from "aws-amplify";
 //import { DataStore, SortDirection } from "aws-amplify";
 import { Images } from "./models";
 import '@aws-amplify/ui-react/styles.css';
@@ -33,6 +33,7 @@ function App({ signOut, user }) {
       if (groups && groups.includes('admin')) {
         images = await DataStore.query(Images, 
           Predicates.ALL,
+          //(c) => c.date('gt', "2024-09-01T00:00:00-07:00"),
           {sort: s => s.date(SortDirection.DESCENDING)}
          );
       } else {
@@ -47,6 +48,13 @@ function App({ signOut, user }) {
 
     DataStore.configure({
       maxRecordsToSync: 100000,
+      //maxRecordsToSync: 100,
+      //syncExpressions: [
+      //  syncExpression(Images, () => {
+      //    return images => images.date('gt', "2020-01-01T00:00:00-07:00");
+      //    //return images => images.date('gt', "2024-10-01T00:00:00-07:00");
+      //  })
+      //]    
     });
     
     // Create listener that will stop observing the model once the sync process is done
@@ -63,8 +71,22 @@ function App({ signOut, user }) {
       }
     });
 
+    // Listen to auth events to sync the datastore
+    Hub.listen('auth', ({ payload }) => {
+      console.log("Auth event", payload)
+      if (payload.event === 'signOut') {
+        console.log("Stop DataStore")
+        DataStore.stop();
+      }
+    });
+
     // Start the DataStore, this kicks-off the sync process.
-    console.log("Start datastore")
+    //console.log("Start stop")
+    //DataStore.stop();
+    //console.log("Start clear")
+    //DataStore.clear();
+    
+    console.log("Start DataStore")
     DataStore.start();
 
     return () => {

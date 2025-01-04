@@ -1,14 +1,54 @@
-import { Collection, Card, Image, View, Divider, Text } from "@aws-amplify/ui-react";
+import './FrameList.css';
+import { Collection, Card, Image, View, Divider, Text, SelectField, Flex } from "@aws-amplify/ui-react";
 import React from 'react'
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 export function FrameList (images) {
+  const [year, setYear] = React.useState('2024');
+  const [feed, setFeed] = React.useState('BF');
+
+if ((images != null) && (images.images.length > 0)) {
+  let filteredImages = images.images.filter(image => (image.date.substring(0,4) == year) && 
+    ((image.camFeed == feed) || ((feed === 'BF') && (image.camFeed === null)) || (feed === 'All')));
+  //let filteredImages = images.images.filter(image => (image.date.substring(0,4) == year));
   return(
     <div>
+      <Flex
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="stretch"
+        alignContent="flex-start"
+        wrap="nowrap"
+        gap="1rem"
+      >
+      <SelectField
+        label="Year"
+        value={year}
+        onChange={(e) => setYear(e.target.value)}
+        labelHidden={true}
+        >
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+      </SelectField>
+      <SelectField
+        label="Feed"
+        value={feed}
+        onChange={(e) => setFeed(e.target.value)}
+        labelHidden={true}
+        >
+        <option value="BF">Brooks Falls (main)</option>
+        <option value="RF">Riffles</option>
+        <option value="All">All</option>
+      </SelectField>
+      </Flex>
     <Collection
-      items={Object.values(images.images).map(({ id, url, date, bearList, camFeed }) => ({
-        id,
+      //items={Object.values(images.images).map(({ id, url, date, bearList, camFeed }) => ({
+      items={Object.values(filteredImages).map(({ id, url, date, bearList, camFeed }) => ({
+          id,
         url,
         date,
         bearList,
@@ -18,6 +58,8 @@ export function FrameList (images) {
       type="grid"
       gap="20px"
       wrap="nowrap"
+      isPaginated
+      itemsPerPage={100}
       isSearchable
       searchPlaceholder="Type bear name or number..."
       searchFilter={(image, keyword) => {
@@ -44,7 +86,7 @@ export function FrameList (images) {
           </Link>
           <View padding="xs">
             <Divider padding="xs" />
-            <Text fontSize="0.75em">{image.camFeed}: {dayjs(image.date).format("DD MMM YYYY [at] h:mm:ss a")}</Text>
+            <Text fontSize="0.75em">{(image.camFeed === null) ? "BF" : image.camFeed}: {dayjs(image.date).format("DD MMM YYYY [at] h:mm:ss a")}</Text>
             <Text fontSize="0.75em" width="10rem" isTruncated={true}>{image.bearList}</Text>
           </View>
         </Card>
@@ -52,6 +94,9 @@ export function FrameList (images) {
     </Collection>
     </div>
   )
+} else {
+  return( <div><p><br></br>Loading...<br></br></p></div>)
+}
 }
 
 export default FrameList;

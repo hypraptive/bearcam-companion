@@ -47,7 +47,7 @@ export default function Boxes({ box, username }) {
       setIdentAgg(pairIdents);
     }
       getIdents();
-      DataStore.observe(Identifications).subscribe(getIdents);
+      //DataStore.observe(Identifications).subscribe(getIdents);
     }, [box.id]);
     //<div className="labelname">{box.label} ({Math.trunc(box.confidence)}%)</div>
 

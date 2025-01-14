@@ -49,7 +49,7 @@ export function ImageView({images, user}) {
       console.log("Get boxes for", curImage.id)
       getBoxes();
       //DataStore.observe(Objects).subscribe(getBoxes);
-      DataStore.observe(Objects).subscribe(getBoxes);
+      //DataStore.observe(Objects).subscribe(getBoxes);
     }
   }, [imagesLoaded, curImage]);
 

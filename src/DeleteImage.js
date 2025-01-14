@@ -33,7 +33,7 @@ export function DeleteImage ({imageID}) {
     console.log("Go back to /");
     //await DataStore.clear();
     //await DataStore.start();
-    navigate(-1);
+    navigate('/');
   }
 
   return(

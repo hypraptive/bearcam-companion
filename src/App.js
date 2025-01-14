@@ -58,7 +58,7 @@ function App({ signOut, user }) {
           sort: s => s.date(SortDirection.DESCENDING)
         }
       ).subscribe(snapshot => {
-        const { items, isSynced } = snapshot;
+        const { items } = snapshot;
         if (items) setImageList(items);
       });
     } else {
@@ -69,7 +69,7 @@ function App({ signOut, user }) {
           sort: s => s.date(SortDirection.DESCENDING)
         }
       ).subscribe(snapshot => {
-        const { items, isSynced } = snapshot;
+        const { items } = snapshot;
         if (items) setImageList(items);
       });
     }

@@ -95,7 +95,12 @@ if ((images != null) && (images.images.length > 0)) {
     </div>
   )
 } else {
-  return( <div><p><br></br>Loading...<br></br></p></div>)
+  return( 
+    <div>
+      <p><br></br>Loading...<br></br></p>
+      <Loader variation="linear" />
+    </div>
+  )
 }
 }
 

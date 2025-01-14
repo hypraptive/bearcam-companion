@@ -1,11 +1,11 @@
 import './FrameView.css';
 import { Button } from "@aws-amplify/ui-react";
 import React from 'react'
-import { Amplify } from 'aws-amplify';
+//import { Amplify } from 'aws-amplify';
 import { DataStore } from "aws-amplify";
 import { Objects, Images } from "./models";
 import { useNavigate } from "react-router-dom";
-import awsconfig from './aws-exports';
+//import awsconfig from './aws-exports';
 
 //Amplify.configure(awsconfig);
 

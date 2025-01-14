@@ -1,8 +1,8 @@
 import './FrameView.css';
 import { Button } from "@aws-amplify/ui-react";
 import React from 'react'
-import { Amplify, API } from 'aws-amplify';
-import awsconfig from './aws-exports';
+import { API } from 'aws-amplify';
+//import awsconfig from './aws-exports';
 
 //Amplify.configure(awsconfig);
 

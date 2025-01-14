@@ -2,8 +2,8 @@ import './FrameView.css';
 import { Button, Collection, Card, Image, View, Divider, Text } from "@aws-amplify/ui-react";
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Amplify, API } from 'aws-amplify';
-import awsconfig from './aws-exports';
+import { API } from 'aws-amplify';
+//import awsconfig from './aws-exports';
 
 //Amplify.configure(awsconfig);
 

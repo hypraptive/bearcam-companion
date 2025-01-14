@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { Amplify, API } from 'aws-amplify';
 import awsconfig from './aws-exports';
 
-Amplify.configure(awsconfig);
+//Amplify.configure(awsconfig);
 
 export function GetImageList () {
   const [imageList, setImageList] = useState("");

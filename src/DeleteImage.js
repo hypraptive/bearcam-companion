@@ -7,7 +7,7 @@ import { Objects, Images } from "./models";
 import { useNavigate } from "react-router-dom";
 import awsconfig from './aws-exports';
 
-Amplify.configure(awsconfig);
+//Amplify.configure(awsconfig);
 
 export function DeleteImage ({imageID}) {
   const navigate = useNavigate();

@@ -26,71 +26,58 @@ import Leader from './Leader';
 function App({ signOut, user }) {
   const [imageList, setImageList] = useState([]);
 
-  useEffect(() => {
-    async function getImages() {
-      const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
-      var images
-      if (groups && groups.includes('admin')) {
-        images = await DataStore.query(Images, 
-          Predicates.ALL,
-          //(c) => c.date('gt', "2024-09-01T00:00:00-07:00"),
-          {sort: s => s.date(SortDirection.DESCENDING)}
-         );
-      } else {
-        images = await DataStore.query(Images, 
-          (c) => c.bearCount('gt', 0),
-          {sort: s => s.date(SortDirection.DESCENDING)}
-         );
-      }
-      //console.log("Images", images)
-      setImageList(images);
-    }
-
-    DataStore.configure({
-      maxRecordsToSync: 100000,
-      //maxRecordsToSync: 100,
-      //syncExpressions: [
-      //  syncExpression(Images, () => {
-      //    return images => images.date('gt', "2020-01-01T00:00:00-07:00");
-      //    //return images => images.date('gt', "2024-10-01T00:00:00-07:00");
-      //  })
-      //]    
-    });
-    
-    // Create listener that will stop observing the model once the sync process is done
-    const removeListener = Hub.listen("datastore", async (capsule) => {
+  async function startDataListener () {
+    console.log("Start Data Listener");
+    Hub.listen("datastore", async (capsule) => {
       const {
         payload: { event, data },
       } = capsule;
 
       console.log("DataStore event", event, data);
 
-      if (event === "ready") {
-        getImages();
-        DataStore.observe(Images).subscribe(getImages);
-      }
+      // if (event === "ready") {
+      //   setSyncData(true);
+      // }
+    });
+  }
+
+  useEffect(() => {
+    const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
+
+    DataStore.configure({
+      maxRecordsToSync: 100000,
+      syncPageSize: 10000
     });
 
-    // Listen to auth events to sync the datastore
-    Hub.listen('auth', ({ payload }) => {
-      console.log("Auth event", payload)
-      if (payload.event === 'signOut') {
-        console.log("Stop DataStore")
-        DataStore.stop();
-      }
-    });
+    var subs = {};
+    if (groups && groups.includes('admin')) {
+      subs = DataStore.observeQuery(
+        Images,
+        Predicates.ALL,
+        {
+          sort: s => s.date(SortDirection.DESCENDING)
+        }
+      ).subscribe(snapshot => {
+        const { items, isSynced } = snapshot;
+        if (items) setImageList(items);
+      });
+    } else {
+      subs = DataStore.observeQuery(
+        Images,
+        (c) => c.bearCount('gt', 0),
+        {
+          sort: s => s.date(SortDirection.DESCENDING)
+        }
+      ).subscribe(snapshot => {
+        const { items, isSynced } = snapshot;
+        if (items) setImageList(items);
+      });
+    }
 
-    // Start the DataStore, this kicks-off the sync process.
-    //console.log("Start stop")
-    //DataStore.stop();
-    //console.log("Start clear")
-    //DataStore.clear();
-    
-    console.log("Start DataStore")
-    DataStore.start();
+    startDataListener();
 
     return () => {
-      removeListener();
+      subs.unsubscribe();
     };
   }, [user]);
 

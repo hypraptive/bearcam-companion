@@ -1,5 +1,5 @@
 import './FrameList.css';
-import { Collection, Card, Image, View, Divider, Text, SelectField, Flex } from "@aws-amplify/ui-react";
+import { Collection, Card, Image, View, Divider, Text, SelectField, Flex, Loader } from "@aws-amplify/ui-react";
 import React from 'react'
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';

@@ -43,8 +43,6 @@ function App({ signOut, user }) {
   }
 
   useEffect(() => {
-    const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
-
     DataStore.configure({
       maxRecordsToSync: 100000,
       syncPageSize: 10000

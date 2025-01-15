@@ -41,7 +41,7 @@ function Layout({ signOut, user, images }) {
       <Heading level={4}>Bearcam Companion</Heading>
       <Outlet />
       <footer className="App-footer">
-        <h2>&copy;2023 BearID Project</h2>
+        <h2>&copy;2025 BearID Project</h2>
       </footer>
     </div>
   );

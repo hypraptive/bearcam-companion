@@ -4,7 +4,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 
-export function FrameList ({images, user}) {
+export function FrameList ({images, user, syncData}) {
   const [year, setYear] = React.useState('2024');
   const [feed, setFeed] = React.useState('BF');
   const [bears, setBears] = React.useState('Bears');
@@ -18,7 +18,6 @@ export function FrameList ({images, user}) {
     return false;
   }
 
-if ((images != null) && (images.length > 0)) {
   let filteredImages = images.filter(image => (image.date.substring(0,4) === year) && 
     ((image.camFeed === feed) || ((feed === 'BF') && (image.camFeed === null)) || (feed === 'All')) &&
     (((bears === 'Empty') && (image.bearCount === 0)) || ((bears === 'Bears') && (image.bearCount > 0)))
@@ -26,6 +25,14 @@ if ((images != null) && (images.length > 0)) {
   //let filteredImages = images.images.filter(image => (image.date.substring(0,4) == year));
   return(
     <div>
+      {syncData
+        ? <div></div>
+        : <div>
+          <p>Loading...</p>
+          <Loader variation="linear" />
+        </div>
+      }
+      <div>
       <Flex
         direction="row"
         justifyContent="flex-start"
@@ -118,15 +125,8 @@ if ((images != null) && (images.length > 0)) {
       )}
     </Collection>
     </div>
-  )
-} else {
-  return( 
-    <div>
-      <p><br></br>Loading...<br></br></p>
-      <Loader variation="linear" />
     </div>
   )
-}
 }
 
 export default FrameList;

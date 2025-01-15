@@ -25,6 +25,7 @@ import Leader from './Leader';
 
 function App({ signOut, user }) {
   const [imageList, setImageList] = useState([]);
+  const [syncData, setSyncData] = useState(false);
 
   async function startDataListener () {
     console.log("Start Data Listener");
@@ -35,9 +36,9 @@ function App({ signOut, user }) {
 
       console.log("DataStore event", event, data);
 
-      // if (event === "ready") {
-      //   setSyncData(true);
-      // }
+      if (event === "ready") {
+        setSyncData(true);
+      }
     });
   }
 
@@ -72,8 +73,8 @@ function App({ signOut, user }) {
     <BrowserRouter>
       <Routes>
         <Route path="/*" element={<Layout signOut={signOut} user={user} images={imageList} />} >
-          <Route index element={<FrameList images={imageList} user={user} />} />
-          <Route path="list" element={<FrameList images={imageList} user={user} />} />
+          <Route index element={<FrameList images={imageList} user={user} syncData={syncData} />} />
+          <Route path="list" element={<FrameList images={imageList} user={user} syncData={syncData} />} />
           <Route path="view" element={<FrameView user={user} />} />
           <Route path="image/:imageId" element={<ImageView images={imageList} user={user} />} />
           <Route path="edit/:imageId" element={<EditView images={imageList} user={user} />} />

@@ -49,30 +49,16 @@ function App({ signOut, user }) {
       syncPageSize: 10000
     });
 
-    var subs = {};
-    if (groups && groups.includes('admin')) {
-      subs = DataStore.observeQuery(
-        Images,
-        Predicates.ALL,
-        {
-          sort: s => s.date(SortDirection.DESCENDING)
-        }
-      ).subscribe(snapshot => {
-        const { items } = snapshot;
-        if (items) setImageList(items);
-      });
-    } else {
-      subs = DataStore.observeQuery(
-        Images,
-        (c) => c.bearCount('gt', 0),
-        {
-          sort: s => s.date(SortDirection.DESCENDING)
-        }
-      ).subscribe(snapshot => {
-        const { items } = snapshot;
-        if (items) setImageList(items);
-      });
-    }
+    const subs = DataStore.observeQuery(
+      Images,
+      Predicates.ALL,
+      {
+        sort: s => s.date(SortDirection.DESCENDING)
+      }
+    ).subscribe(snapshot => {
+      const { items } = snapshot;
+      if (items) setImageList(items);
+    });
 
     startDataListener();
 

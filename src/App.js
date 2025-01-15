@@ -86,8 +86,8 @@ function App({ signOut, user }) {
     <BrowserRouter>
       <Routes>
         <Route path="/*" element={<Layout signOut={signOut} user={user} images={imageList} />} >
-          <Route index element={<FrameList images={imageList} />} />
-          <Route path="list" element={<FrameList images={imageList} />} />
+          <Route index element={<FrameList images={imageList} user={user} />} />
+          <Route path="list" element={<FrameList images={imageList} user={user} />} />
           <Route path="view" element={<FrameView user={user} />} />
           <Route path="image/:imageId" element={<ImageView images={imageList} user={user} />} />
           <Route path="edit/:imageId" element={<EditView images={imageList} user={user} />} />

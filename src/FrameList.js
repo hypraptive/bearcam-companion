@@ -4,13 +4,25 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 
-export function FrameList (images) {
+export function FrameList ({images, user}) {
   const [year, setYear] = React.useState('2024');
   const [feed, setFeed] = React.useState('BF');
+  const [bears, setBears] = React.useState('Bears');
 
-if ((images != null) && (images.images.length > 0)) {
-  let filteredImages = images.images.filter(image => (image.date.substring(0,4) === year) && 
-    ((image.camFeed === feed) || ((feed === 'BF') && (image.camFeed === null)) || (feed === 'All')));
+  function isAdmin() {
+    if (user) {
+    const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
+    if (groups && groups.includes('admin')) {
+      return true;
+    }}
+    return false;
+  }
+
+if ((images != null) && (images.length > 0)) {
+  let filteredImages = images.filter(image => (image.date.substring(0,4) === year) && 
+    ((image.camFeed === feed) || ((feed === 'BF') && (image.camFeed === null)) || (feed === 'All')) &&
+    (((bears === 'Empty') && (image.bearCount === 0)) || ((bears === 'Bears') && (image.bearCount > 0)))
+  );
   //let filteredImages = images.images.filter(image => (image.date.substring(0,4) == year));
   return(
     <div>
@@ -44,6 +56,19 @@ if ((images != null) && (images.images.length > 0)) {
         <option value="RF">Riffles</option>
         <option value="All">All</option>
       </SelectField>
+      {isAdmin() ? (
+        <SelectField
+          label="Bears"
+          value={bears}
+          onChange={(e) => setBears(e.target.value)}
+          labelHidden={true}
+        >
+          <option value="Bears">Images with bears</option>
+          <option value="Empty">Images with no bears</option>
+        </SelectField>
+      ) : (
+        <div></div>
+      ) }
       </Flex>
     <Collection
       //items={Object.values(images.images).map(({ id, url, date, bearList, camFeed }) => ({

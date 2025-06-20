@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 export function FrameList ({images, user, syncData}) {
-  const [year, setYear] = React.useState('2024');
+  const [year, setYear] = React.useState('2025');
   const [feed, setFeed] = React.useState('BF');
   const [bears, setBears] = React.useState('Bears');
 

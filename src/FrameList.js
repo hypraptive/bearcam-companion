@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 
 export function FrameList ({images, user, syncData}) {
   const [year, setYear] = React.useState('2025');
-  const [feed, setFeed] = React.useState('BF');
+  const [feed, setFeed] = React.useState('All');
   const [bears, setBears] = React.useState('Bears');
 
   function isAdmin() {

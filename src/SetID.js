@@ -4,7 +4,7 @@ import { Analytics, DataStore } from "aws-amplify";
 import { Identifications, Objects, Images } from "./models";
 
 export default function SetID ({ boxID, curList, username }) {
-  const bearList = [
+  const bearListAll = [
     'Not a bear',
     'Unknown',
     'Unknown Adult',
@@ -263,6 +263,7 @@ export default function SetID ({ boxID, curList, username }) {
       );
       Analytics.record({ name: 'createId' });
     }
+    setCurSel(idValue);
     updateBearInfo(boxID);
   }
 
@@ -271,7 +272,7 @@ export default function SetID ({ boxID, curList, username }) {
       <SelectField
         label={"Selected: " + curSel}
         placeholder="Pick a bear..."
-        options={bearList}
+        options={bearListAll}
         onChange={(e) => handleIDSelect(e.target.value)}
       ></SelectField>
 

@@ -48,7 +48,7 @@ export default function Boxes({ box, username }) {
     }
       getIdents();
       //DataStore.observe(Identifications).subscribe(getIdents);
-    }, [box.id]);
+    }, [box.id, identList]);
     //<div className="labelname">{box.label} ({Math.trunc(box.confidence)}%)</div>
 
     if (box.label === "Bear") {

@@ -1,6 +1,6 @@
 import { SelectField, Flex } from '@aws-amplify/ui-react';
 import { useState, useEffect } from 'react'
-import { Analytics, DataStore } from "aws-amplify";
+import { DataStore } from "aws-amplify";
 import { Identifications, Objects, Images } from "./models";
 
 export default function SetID ({ boxID, curList, username }) {
@@ -250,7 +250,7 @@ export default function SetID ({ boxID, curList, username }) {
           updated.name = idValue;
         })
       );
-      Analytics.record({ name: 'modifyId' });
+      //Analytics.record({ name: 'modifyId' });
     } else {
       // create new ident
       console.log("New Ident", idValue, username, boxID)
@@ -261,7 +261,7 @@ export default function SetID ({ boxID, curList, username }) {
           objectsID: boxID
         })
       );
-      Analytics.record({ name: 'createId' });
+      //Analytics.record({ name: 'createId' });
     }
     setCurSel(idValue);
     updateBearInfo(boxID);

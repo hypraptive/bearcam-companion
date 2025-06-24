@@ -18,7 +18,7 @@ export function FrameList ({images, user, syncData}) {
     return false;
   }
 
-  let filteredImages = images.filter(image => (image.date.substring(0,4) === year) && 
+  let filteredImages = images.filter(image => ((image.date != null) && (image.date.substring(0,4) === year)) && 
     ((image.camFeed === feed) || ((feed === 'BF') && (image.camFeed === null)) || (feed === 'All')) &&
     (((bears === 'Empty') && (image.bearCount === 0)) || ((bears === 'Bears') && (image.bearCount > 0)))
   );

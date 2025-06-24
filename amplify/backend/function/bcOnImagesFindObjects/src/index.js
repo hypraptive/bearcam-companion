@@ -135,8 +135,16 @@ updateImageInfo = async (imagesID, bearCount, bearList) => {
     mutation UPDATE_IMAGES($input: UpdateImagesInput!) {
       updateImages(input: $input) {
         id
+        url
+        date
+        camFeed
         bearCount
         bearList
+        file{
+          bucket
+          region
+          key
+        }
         _version
         createdAt
         updatedAt

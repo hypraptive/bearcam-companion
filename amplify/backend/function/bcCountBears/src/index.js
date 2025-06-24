@@ -100,7 +100,11 @@ updateImageInfo = async (image, bearCount, bearList) => {
         id
         bearCount
         bearList
-      }
+         _version
+        createdAt
+        updatedAt
+        _lastChangedAt
+     }
     }`;
   
     const variables = {

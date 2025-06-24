@@ -137,6 +137,10 @@ updateImageInfo = async (imagesID, bearCount, bearList) => {
         id
         bearCount
         bearList
+        _version
+        createdAt
+        updatedAt
+        _lastChangedAt
       }
     }`;
   

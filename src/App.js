@@ -43,11 +43,19 @@ function App({ signOut, user }) {
   }
 
   useEffect(() => {
+    console.log(user);
+
+    Hub.listen('auth', ({payload}) => {
+      console.log("AUTH:", payload.event, payload.data);
+    });    
+
     DataStore.configure({
       maxRecordsToSync: 100000,
       syncPageSize: 10000
     });
 
+    console.log("Querying DataStore");
+    console.log("Sync data", syncData)
     const subs = DataStore.observeQuery(
       Images,
       Predicates.ALL,
@@ -62,9 +70,12 @@ function App({ signOut, user }) {
     startDataListener();
 
     return () => {
+      console.log("Unsubscribing from DataStore");
       subs.unsubscribe();
+      console.log("Stop DataStore");
+      DataStore.stop();
     };
-  }, [user]);
+  }, []);
 
   return (
     <div className="App">

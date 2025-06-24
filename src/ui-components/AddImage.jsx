@@ -10,7 +10,7 @@ import {
   getOverrideProps,
   useDataStoreCreateAction,
   useStateMutationAction,
-} from "@aws-amplify/ui-react/internal";
+} from "./utils";
 import { Images } from "../models";
 import { schema } from "../models/schema";
 import { Button, Divider, Flex, Text, TextField } from "@aws-amplify/ui-react";
@@ -25,11 +25,11 @@ export default function AddImage(props) {
     setTextFieldThreeTwoFourEightTwoSevenSevenFourValue,
   ] = useStateMutationAction("");
   const buttonOnClick = useDataStoreCreateAction({
-    model: Images,
     fields: {
       url: textFieldThreeTwoFourEightTwoSevenSevenTwoValue,
       date: textFieldThreeTwoFourEightTwoSevenSevenFourValue,
     },
+    model: Images,
     schema: schema,
   });
   return (

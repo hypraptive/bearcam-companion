@@ -6,10 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import {
-  getOverrideProps,
-  useStateMutationAction,
-} from "@aws-amplify/ui-react/internal";
+import { getOverrideProps, useStateMutationAction } from "./utils";
 import { Flex, Image, Text } from "@aws-amplify/ui-react";
 export default function StandardCard(props) {
   const { images, overrides, ...rest } = props;
